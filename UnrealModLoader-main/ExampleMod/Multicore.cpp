@@ -5,6 +5,7 @@
 #include <fstream>
 #include <string>
 
+
 // BPFUNCTION(WriteToFile)
 // {
 // 	std::cout << "WriteToFile" << std::endl;
@@ -25,8 +26,8 @@ BPFUNCTION(SavePlaintext)
 		UE4::FString Text;
 	};
 	auto Inputs = stack->GetInputParams<InputParams>();
-	string filecontent = Inputs.Text;
-	string fileName = Inputs.Filename;
+	std::string fileContent = Inputs.Text;
+	std::string fileName = Inputs.Filename;
 	while (std::cin >> std::noskipws >> fileContent) {
         // Append the content to the existing content (if any)
         std::ofstream outputFile(fileName, std::ios::app);
@@ -35,7 +36,7 @@ BPFUNCTION(SavePlaintext)
         if (!outputFile.is_open()) {
             std::cerr << "Error opening the file for writing." << std::endl;
 			stack->SetOutput<bool>("Success", false);
-            return 1; // Return an error code
+            return; // Return an error code
         }
 
         // Write the content to the file
@@ -59,7 +60,7 @@ BPFUNCTION(ReadPlaintext)
 		UE4::FString Filename;
 	};
 	auto Inputs = stack->GetInputParams<InputParams>();
-	string fileName = Inputs.Filename;
+	std::string fileName = (std::string)Inputs->Filename;
 
 	 // Create an input file stream and open the file
     std::ifstream inputFile(fileName);

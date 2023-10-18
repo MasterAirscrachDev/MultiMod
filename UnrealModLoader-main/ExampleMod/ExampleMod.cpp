@@ -9,6 +9,7 @@ BPFUNCTION(WriteToFile)
 		UE4::FString NameTest;
 	};
 	auto Inputs = stack->GetInputParams<InputParams>();
+	//std::cout << Inputs.NameTest << std::endl;
 	stack->SetOutput<UE4::FString>("OutPutString", L"KboyGang");
 	stack->SetOutput<bool>("ReturnValue", true);
 }
