@@ -26,8 +26,8 @@ BPFUNCTION(SavePlaintext)
 		UE4::FString Text;
 	};
 	auto Inputs = stack->GetInputParams<InputParams>();
-	std::string fileContent = Inputs.Text;
-	std::string fileName = Inputs.Filename;
+	std::string fileContent = Inputs->Text.ToString();
+	std::string fileName = Inputs->Filename.ToString();
 	while (std::cin >> std::noskipws >> fileContent) {
         // Append the content to the existing content (if any)
         std::ofstream outputFile(fileName, std::ios::app);
@@ -60,7 +60,7 @@ BPFUNCTION(ReadPlaintext)
 		UE4::FString Filename;
 	};
 	auto Inputs = stack->GetInputParams<InputParams>();
-	std::string fileName = (std::string)Inputs->Filename;
+	std::string fileName = Inputs->Filename.ToString();
 
 	 // Create an input file stream and open the file
     std::ifstream inputFile(fileName);
@@ -82,7 +82,7 @@ BPFUNCTION(ReadPlaintext)
     inputFile.close();
 	stack->SetOutput<bool>("Success", true);
 }
-BPFUNCTION(DeleteFile)
+BPFUNCTION(DeleteFilePls)
 {
 	std::cout << "DeleteFile" << std::endl;
 	struct InputParams
@@ -90,7 +90,8 @@ BPFUNCTION(DeleteFile)
 		UE4::FString Filename;
 	};
 	auto Inputs = stack->GetInputParams<InputParams>();
-	if (std::remove(Inputs.Filename) != 0) {
+	const char* fileName = Inputs->Filename.ToString().c_str();
+	if (std::remove(fileName) != 0) {
         perror("Error deleting the file");
 		stack->SetOutput<bool>("Success", false);
     } else {
@@ -108,7 +109,7 @@ void MultiMod::InitializeMod()
 	//REGISTER_FUNCTION(WriteToFile);
 	REGISTER_FUNCTION(SavePlaintext);
 	REGISTER_FUNCTION(ReadPlaintext);
-	REGISTER_FUNCTION(DeleteFile);
+	REGISTER_FUNCTION(DeleteFilePls);
 
 	//MinHook::Init(); //Uncomment if you plan to do hooks
 
