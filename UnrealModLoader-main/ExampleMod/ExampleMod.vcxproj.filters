@@ -25,7 +25,7 @@
     <ClCompile Include="ExampleMod.cpp">
       <Filter>Mod</Filter>
     </ClCompile>
-    <ClCompile Include="Multicore.cpp">
+    <ClCompile Include="MultiMod.cpp">
       <Filter>Mod</Filter>
     </ClCompile>
   </ItemGroup>
@@ -36,7 +36,7 @@
     <ClInclude Include="ExampleMod.h">
       <Filter>Mod</Filter>
     </ClInclude>
-    <ClInclude Include="Multicore.h">
+    <ClInclude Include="MultiMod.h">
       <Filter>Mod</Filter>
     </ClInclude>
   </ItemGroup>

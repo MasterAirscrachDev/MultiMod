@@ -1,4 +1,4 @@
-#include "Multicore.h"
+#include "MultiMod.h"
 #include "Utilities/MinHook.h"
 #include <cstdio>
 #include <iostream>
@@ -8,7 +8,7 @@
 
 BPFUNCTION(SavePlaintext)
 {
-	std::cout << "SavePlaintext" << std::endl;
+	//std::cout << "SavePlaintext" << std::endl;
 	struct InputParams
 	{
 		UE4::FString Filename;
@@ -23,7 +23,7 @@ BPFUNCTION(SavePlaintext)
 
         // Check if the file is open
         if (!outputFile.is_open()) {
-            std::cerr << "Error opening the file for writing." << std::endl;
+            //std::cerr << "Error opening the file for writing." << std::endl;
 			stack->SetOutput<bool>("Success", false);
             return; // Return an error code
         }
@@ -32,18 +32,19 @@ BPFUNCTION(SavePlaintext)
         outputFile << fileContent;
         outputFile.close();
 
-        std::cout << "Content added to the file." << std::endl;
+        //std::cout << "Content added to the file." << std::endl;
 
         // Clear the fileContent string for the next input
         fileContent.clear();
     }
 
-    std::cout << "File saved successfully." << std::endl;
+    //std::cout << "File saved successfully." << std::endl;
 	stack->SetOutput<bool>("Success", true);
+	
 }
 BPFUNCTION(ReadPlaintext)
 {
-	std::cout << "ReadPlaintext" << std::endl;
+	//std::cout << "ReadPlaintext" << std::endl;
 	struct InputParams
 	{
 		UE4::FString Filename;
@@ -56,7 +57,7 @@ BPFUNCTION(ReadPlaintext)
 
     // Check if the file is open
     if (!inputFile.is_open()) {
-        std::cerr << "Error opening the file for reading." << std::endl;
+        //std::cerr << "Error opening the file for reading." << std::endl;
 		stack->SetOutput<bool>("Success", false);
 		stack->SetOutput<UE4::FString>("Text", L"");
     }
@@ -80,7 +81,7 @@ BPFUNCTION(ReadPlaintext)
 }
 BPFUNCTION(DeleteFilePls)
 {
-	std::cout << "DeleteFile" << std::endl;
+	//std::cout << "DeleteFile" << std::endl;
 	struct InputParams
 	{
 		UE4::FString Filename;
@@ -88,10 +89,10 @@ BPFUNCTION(DeleteFilePls)
 	auto Inputs = stack->GetInputParams<InputParams>();
 	const char* fileName = Inputs->Filename.ToString().c_str();
 	if (std::remove(fileName) != 0) {
-        perror("Error deleting the file");
+        //perror("Error deleting the file");
 		stack->SetOutput<bool>("Success", false);
     } else {
-        printf("File deleted successfully.\n");
+        //printf("File deleted successfully.\n");
 		stack->SetOutput<bool>("Success", true);
     }
 }

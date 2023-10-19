@@ -1,10 +1,10 @@
 #include <windows.h>
-#include "ExampleMod.h"
+#include "MultiMod.h"
 //Mod* CoreMod;
 
 void CreateMod()
 {
-    auto CoreMod = new ExampleMod();
+    auto CoreMod = new MultiMod();
 }
 
 BOOL APIENTRY DllMain(HMODULE hModule,

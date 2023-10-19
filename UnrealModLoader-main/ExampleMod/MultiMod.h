@@ -45,4 +45,7 @@ private:
 	UE4::AActor* ModActor;
 };
 
+
+BPFUNCTION(SavePlaintext);
+BPFUNCTION(ReadPlaintext);
 BPFUNCTION(DeleteFilePls);
