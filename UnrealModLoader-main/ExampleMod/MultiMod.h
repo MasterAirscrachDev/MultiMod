@@ -12,7 +12,7 @@ public:
 		ModName = "MultiMod"; // Mod Name -- If Using BP ModActor, Should Be The Same Name As Your Pak
 		ModVersion = "1.0.0"; // Mod Version
 		ModDescription = "This, Is the Security Breach MultiplayerMod"; // Mod Description
-		ModAuthors = "MasterAirscrach, OmegaDev"; // Mod Author
+		ModAuthors = "MasterAirscrach, OmegaDev, Blanana"; // Mod Author
 		ModLoaderVersion = "2.2.1";
 
 		// Dont Touch The Internal Stuff
@@ -44,8 +44,3 @@ private:
 	// If you have a BP Mod Actor, This is a straight refrence to it
 	UE4::AActor* ModActor;
 };
-
-
-BPFUNCTION(SavePlaintext);
-BPFUNCTION(ReadPlaintext);
-BPFUNCTION(DeleteFilePls);

@@ -40,7 +40,7 @@ BPFUNCTION(SavePlaintext)
 
     //std::cout << "File saved successfully." << std::endl;
 	stack->SetOutput<bool>("Success", true);
-	
+	return;
 }
 BPFUNCTION(ReadPlaintext)
 {
