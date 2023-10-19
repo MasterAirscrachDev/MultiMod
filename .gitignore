@@ -73,3 +73,13 @@ Plugins/*/Intermediate/*
 
 # Cache files for the editor to use
 DerivedDataCache/*
+
+MultiMod/Intermediate/*
+
+MultiMod/DerivedDataCache/*
+
+MultiMod/Saved/*
+
+MultiMod/Binaries/*
+
+MultiMod/Saved/Logs/fnaf9.log
