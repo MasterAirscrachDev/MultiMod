@@ -6,17 +6,6 @@
 #include <string>
 
 
-// BPFUNCTION(WriteToFile)
-// {
-// 	std::cout << "WriteToFile" << std::endl;
-// 	struct InputParams
-// 	{
-// 		UE4::FString NameTest;
-// 	};
-// 	auto Inputs = stack->GetInputParams<InputParams>();
-// 	stack->SetOutput<UE4::FString>("OutPutString", L"KboyGang");
-// 	stack->SetOutput<bool>("ReturnValue", true);
-// }
 BPFUNCTION(SavePlaintext)
 {
 	std::cout << "SavePlaintext" << std::endl;
@@ -69,18 +58,25 @@ BPFUNCTION(ReadPlaintext)
     if (!inputFile.is_open()) {
         std::cerr << "Error opening the file for reading." << std::endl;
 		stack->SetOutput<bool>("Success", false);
-        //return 1; // Return an error code
+		stack->SetOutput<UE4::FString>("Text", L"");
     }
+	else
+	{
+		// Read and display the contents of the file
+		std::string fullData;
+		std::string line;
+		while (std::getline(inputFile, line)) {
+			std::cout << line << std::endl;
+			fullData += line;
+		}
 
-    // Read and display the contents of the file
-    std::string line;
-    while (std::getline(inputFile, line)) {
-        std::cout << line << std::endl;
-    }
-
-    // Close the file
-    inputFile.close();
-	stack->SetOutput<bool>("Success", true);
+		// Close the file
+		inputFile.close();
+		stack->SetOutput<bool>("Success", true);
+		std::wstring fullDataW(fullData.begin(), fullData.end());
+		UE4::FString fullDataF = fullDataW.c_str();
+		stack->SetOutput<UE4::FString>("Text", fullDataF);
+	}
 }
 BPFUNCTION(DeleteFilePls)
 {

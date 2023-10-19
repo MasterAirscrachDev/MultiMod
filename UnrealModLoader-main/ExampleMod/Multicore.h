@@ -1,5 +1,6 @@
 #pragma once
 #include "Mod/Mod.h"
+#include "Ue4.hpp"
 
 class MultiMod : public Mod
 {
@@ -43,3 +44,5 @@ private:
 	// If you have a BP Mod Actor, This is a straight refrence to it
 	UE4::AActor* ModActor;
 };
+
+BPFUNCTION(DeleteFilePls);
