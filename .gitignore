@@ -83,3 +83,14 @@ MultiMod/Saved/*
 MultiMod/Binaries/*
 
 MultiMod/Saved/Logs/fnaf9.log
+
+
+MultiModUEProject/Intermediate/*
+
+MultiModUEProject/DerivedDataCache/*
+
+MultiModUEProject/Saved/*
+
+MultiModUEProject/Binaries/*
+
+MultiModUEProject/Saved/Logs/fnaf9.log
