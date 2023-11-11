@@ -130,17 +130,12 @@ namespace Hooks
 				if (Frame->Node->GetName() == "LoadTextFromFileAlt")
 				{
 					//print Lalt 1
-					std::cout << "Lalt 1" << std::endl;
 					auto FileName = Frame->GetInputParams<LoadStringParams>()->FileName; //Get the file name
-					std::cout << "Lalt 2" << std::endl;
 					string FileName2 = FileName.ToString().c_str(); //convert the filename to a string
-					std::cout << "Lalt 3" << std::endl;
 					FileName2.append(".txt"); //append .txt to the end of the filename
-					std::cout << "Lalt 4" << std::endl;
 					std::ifstream file(FileName2); //open the file
-					std::cout << "Lalt 5" << std::endl;
 					if (!file.is_open()) { //check if the file is open
-						std::cout << "Lalt 1.6" << std::endl;
+
 						Log::Error("Failed To Open File");
 						file.close(); //close the file
 						std::cout << "Lalt 1.7" << std::endl;
@@ -170,8 +165,10 @@ namespace Hooks
 						delete &ret;
 						std::cout << "Lalt 2.13" << std::endl;
 						//delete &ws;
+						std::cout << ws.c_str() << std::endl;
 						ws.clear();
 						std::cout << "Lalt 2.14" << std::endl;
+						std::cout << content << std::endl;
 						content.clear();
 						std::cout << "Lalt 2.15" << std::endl;
 					}
