@@ -69,7 +69,7 @@ void SetupProfile(std::string Path)
 		GameProfile::SelectedGameProfile.ProfileName = gamename;
 		Log::Info("Profile Detected: %s", gamename.c_str());
 		std::ifstream file("Profile");
-
+		Log::Dmg("Loading Profile: %s", gamename.c_str());
 		INI GameInfo(Profile, true);
 		GameInfo.select("GameInfo");
 		GameProfile::SelectedGameProfile.IsUsingFChunkedFixedUObjectArray = GameInfo.getAs<int>("GameInfo", "IsUsingFChunkedFixedUObjectArray", 0);
