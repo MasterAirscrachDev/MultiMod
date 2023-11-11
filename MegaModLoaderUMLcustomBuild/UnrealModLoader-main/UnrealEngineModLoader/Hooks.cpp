@@ -81,7 +81,6 @@ namespace Hooks
 						 
 					}
 				}
-
 				if (Frame->Node->GetName() == "RemoveTextFile")
 				{
 					auto FileName = Frame->GetInputParams<RemoveTextParams>()->FileName; //Get the file name
@@ -91,7 +90,6 @@ namespace Hooks
 						Log::Error("Failed To Delete File");
 					}
 				}
-
 				if (Frame->Node->GetName() == "GetPersistentObject")
 				{
 					auto ModName = Frame->GetInputParams<GetPersistentObject>()->ModName;
@@ -154,17 +152,23 @@ namespace Hooks
 					}
 					else {
 						std::cout << "Lalt 2.6" << std::endl;
-						string fileContents((std::istreambuf_iterator<char>(file)), std::istreambuf_iterator<char>()); //read the file
+						std::string content;
+						file >> content;
+						// string fileContents((std::istreambuf_iterator<char>(file)), std::istreambuf_iterator<char>()); //read the file
 						std::cout << "Lalt 2.7" << std::endl;
 						file.close(); //close the file
 						std::cout << "Lalt 2.8" << std::endl;
-						wstring ws(fileContents.begin(), fileContents.end()); //convert the file contents to a wstring
+						// wstring ws(fileContents.begin(), fileContents.end()); //convert the file contents to a wstring
+						wstring ws(content.begin(), content.end()); //convert the file contents to a wstring
 						std::cout << "Lalt 2.9" << std::endl;
 						UE4::FString ret = ws.c_str(); //convert the wstring to a UE4::FString
 						std::cout << "Lalt 2.10" << std::endl;
 						Frame->SetOutput<UE4::FString>("Text", ret); //set the return value
 						std::cout << "Lalt 2.11" << std::endl;
 						//UE4::SetVariable<UE4::FString>(obj, "LoadTextFromFileReturnValue", ret);
+						delete &ret;
+						delete &ws;
+						delete &content;
 					}
 				}
 
