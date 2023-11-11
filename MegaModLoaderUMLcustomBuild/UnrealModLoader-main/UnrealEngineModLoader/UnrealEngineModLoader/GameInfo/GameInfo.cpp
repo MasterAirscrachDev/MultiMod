@@ -6,7 +6,6 @@
 #include "INI.h"
 #include <fstream>
 #include <sys/stat.h>
-#include <unistd.h>
 #include "Utilities/Pattern.h"
 #include "Utilities/Version.h"
 #include "../Hooks.h"
