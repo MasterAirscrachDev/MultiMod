@@ -75,6 +75,7 @@ namespace Hooks
 						FileName2.append(".txt"); //append .txt to the end of the filename
 						ofstream myfile; //create a file stream
 						myfile.open(FileName2); //open the file
+						Log::Info("Saving ({0})", text.ToString().c_str());
 						myfile << text.ToString().c_str(); //write the text to the file
 						myfile.flush(); //flush the file
 						myfile.close(); //close the file
@@ -138,47 +139,33 @@ namespace Hooks
 					FileName2.append(".txt"); //append .txt to the end of the filename
 					std::ifstream file(FileName2); //open the file
 					if (!file.is_open()) { //check if the file is open
-
 						Log::Error("Failed To Open File");
 						file.close(); //close the file
-						std::cout << "Lalt 1.7" << std::endl;
 						UE4::FString ReturnError = UE4::FString(TEXT("ERR")); //create a return string
-						std::cout << "Lalt 1.8" << std::endl;
 						Frame->SetOutput<UE4::FString>("Text", ReturnError); //set the return value
-						std::cout << "Lalt 1.9" << std::endl;
 						//UE4::SetVariable<UE4::FString>(obj, "LoadTextFromFileReturnValue",ReturnError);
 					}
 					else {
-						std::cout << "Lalt 2.6" << std::endl;
 						std::string content;
-						file >> content;
-						// string fileContents((std::istreambuf_iterator<char>(file)), std::istreambuf_iterator<char>()); //read the file
-						std::cout << "Lalt 2.7" << std::endl;
+						file >> content; //read the file
 						file.close(); //close the file
-						std::cout << "Lalt 2.8" << std::endl;
-						// wstring ws(fileContents.begin(), fileContents.end()); //convert the file contents to a wstring
 						wstring ws(content.begin(), content.end()); //convert the file contents to a wstring
-						std::cout << "Lalt 2.9" << std::endl;
 						UE4::FString ret = ws.c_str(); //convert the wstring to a UE4::FString
-						std::cout << "Lalt 2.10" << std::endl;
 						Frame->SetOutput<UE4::FString>("Text", UE4::FString(ret)); //set the return value
-						std::cout << "Lalt 2.11" << std::endl;
-						//UE4::SetVariable<UE4::FString>(obj, "LoadTextFromFileReturnValue", ret);
-						std::cout << "Lalt 2.12" << std::endl;
-						//delete &ret;
+						ret = nullptr;
 						std::cout << "Lalt 2.13" << std::endl;
-						//delete &ws;
-						std::cout << ws.c_str() << std::endl;
 						ws.clear();
+						ws = nullptr;
 						std::cout << "Lalt 2.14" << std::endl;
-						std::cout << content << std::endl;
 						content.clear();
+						content = nullptr;
 						std::cout << "Lalt 2.15" << std::endl;
 					}
 					std::cout << "Lalt 2.16" << std::endl;
 					FileName = nullptr;
 					std::cout << "Lalt 2.17" << std::endl;
 					FileName2.clear();
+					FileName2 = nullptr;
 					std::cout << "Lalt 2.18" << std::endl;
 				}
 
