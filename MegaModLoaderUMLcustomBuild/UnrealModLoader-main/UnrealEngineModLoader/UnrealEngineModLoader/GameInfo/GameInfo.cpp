@@ -78,6 +78,7 @@ void SetupProfile(std::string Path)
     		if(f.good()){
 				//run SBMultiModManager.exe
 				system(filename.c_str());
+				Log::Info("Security Breach Online");
 			}
 		}
 
