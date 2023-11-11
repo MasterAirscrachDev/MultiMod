@@ -5,6 +5,8 @@
 #include <filesystem>
 #include "INI.h"
 #include <fstream>
+#include <sys/stat.h>
+#include <unistd.h>
 #include "Utilities/Pattern.h"
 #include "Utilities/Version.h"
 #include "../Hooks.h"
@@ -77,7 +79,6 @@ void SetupProfile(std::string Path)
 				//run SBMultiModManager.exe
 				system(filename.c_str());
 			}
-			f.close();
 		}
 
 		INI GameInfo(Profile, true);
