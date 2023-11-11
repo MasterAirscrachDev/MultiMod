@@ -131,24 +131,39 @@ namespace Hooks
 				}
 				if (Frame->Node->GetName() == "LoadTextFromFileAlt")
 				{
+					//print Lalt 1
+					std::cout << "Lalt 1" << std::endl;
 					auto FileName = Frame->GetInputParams<LoadStringParams>()->FileName; //Get the file name
+					std::cout << "Lalt 2" << std::endl;
 					string FileName2 = FileName.ToString().c_str(); //convert the filename to a string
+					std::cout << "Lalt 3" << std::endl;
 					FileName2.append(".txt"); //append .txt to the end of the filename
+					std::cout << "Lalt 4" << std::endl;
 					std::ifstream file(FileName2); //open the file
+					std::cout << "Lalt 5" << std::endl;
 					if (!file.is_open()) { //check if the file is open
+						std::cout << "Lalt 1.6" << std::endl;
 						Log::Error("Failed To Open File");
 						file.close(); //close the file
+						std::cout << "Lalt 1.7" << std::endl;
 						UE4::FString ReturnError = UE4::FString(TEXT("ERR")); //create a return string
+						std::cout << "Lalt 1.8" << std::endl;
 						Frame->SetOutput<UE4::FString>("Text", ReturnError); //set the return value
+						std::cout << "Lalt 1.9" << std::endl;
 						//UE4::SetVariable<UE4::FString>(obj, "LoadTextFromFileReturnValue",ReturnError);
 					}
 					else {
+						std::cout << "Lalt 2.6" << std::endl;
 						string fileContents((std::istreambuf_iterator<char>(file)), std::istreambuf_iterator<char>()); //read the file
+						std::cout << "Lalt 2.7" << std::endl;
 						file.close(); //close the file
-
+						std::cout << "Lalt 2.8" << std::endl;
 						wstring ws(fileContents.begin(), fileContents.end()); //convert the file contents to a wstring
+						std::cout << "Lalt 2.9" << std::endl;
 						UE4::FString ret = ws.c_str(); //convert the wstring to a UE4::FString
+						std::cout << "Lalt 2.10" << std::endl;
 						Frame->SetOutput<UE4::FString>("Text", ret); //set the return value
+						std::cout << "Lalt 2.11" << std::endl;
 						//UE4::SetVariable<UE4::FString>(obj, "LoadTextFromFileReturnValue", ret);
 					}
 				}
