@@ -4,6 +4,7 @@
 #include <string>
 #include <filesystem>
 #include "INI.h"
+#include <fstream>
 #include "Utilities/Pattern.h"
 #include "Utilities/Version.h"
 #include "../Hooks.h"
@@ -70,6 +71,15 @@ void SetupProfile(std::string Path)
 		Log::Info("Profile Detected: %s", gamename.c_str());
 		std::ifstream file("Profile");
 		Log::Dmg("Loading Profile: %s", gamename.c_str());
+		if(gamename == "SB"){
+			ifstream f("SBMultiModManager.exe".c_str());
+    		if(f.good()){
+				//run SBMultiModManager.exe
+				system("SBMultiModManager.exe");
+			}
+			f.close();
+		}
+
 		INI GameInfo(Profile, true);
 		GameInfo.select("GameInfo");
 		GameProfile::SelectedGameProfile.IsUsingFChunkedFixedUObjectArray = GameInfo.getAs<int>("GameInfo", "IsUsingFChunkedFixedUObjectArray", 0);
