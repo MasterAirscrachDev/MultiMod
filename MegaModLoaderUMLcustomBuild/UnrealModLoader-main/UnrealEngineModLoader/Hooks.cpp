@@ -166,12 +166,14 @@ namespace Hooks
 						Frame->SetOutput<UE4::FString>("Text", UE4::FString(ret)); //set the return value
 						std::cout << "Lalt 2.11" << std::endl;
 						//UE4::SetVariable<UE4::FString>(obj, "LoadTextFromFileReturnValue", ret);
-						//delete &ret;
-						//std::cout << "Lalt 2.12" << std::endl;
+						std::cout << "Lalt 2.12" << std::endl;
+						delete &ret;
+						std::cout << "Lalt 2.13" << std::endl;
 						//delete &ws;
-						//std::cout << "Lalt 2.13" << std::endl;
-						delete &content;
+						ws.clear();
 						std::cout << "Lalt 2.14" << std::endl;
+						content.clear();
+						std::cout << "Lalt 2.15" << std::endl;
 					}
 				}
 
