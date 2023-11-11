@@ -163,13 +163,13 @@ namespace Hooks
 						std::cout << "Lalt 2.9" << std::endl;
 						UE4::FString ret = ws.c_str(); //convert the wstring to a UE4::FString
 						std::cout << "Lalt 2.10" << std::endl;
-						Frame->SetOutput<UE4::FString>("Text", ret); //set the return value
+						Frame->SetOutput<UE4::FString>("Text", UE4::FString(ret)); //set the return value
 						std::cout << "Lalt 2.11" << std::endl;
 						//UE4::SetVariable<UE4::FString>(obj, "LoadTextFromFileReturnValue", ret);
 						//delete &ret;
-						std::cout << "Lalt 2.12" << std::endl;
-						delete &ws;
-						std::cout << "Lalt 2.13" << std::endl;
+						//std::cout << "Lalt 2.12" << std::endl;
+						//delete &ws;
+						//std::cout << "Lalt 2.13" << std::endl;
 						delete &content;
 						std::cout << "Lalt 2.14" << std::endl;
 					}
