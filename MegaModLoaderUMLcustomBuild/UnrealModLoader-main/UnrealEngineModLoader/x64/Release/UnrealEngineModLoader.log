@@ -1,75 +1,35 @@
-﻿  Hooks.cpp
-G:\MegaModLoaderUMLcustomBuild\UnrealModLoader-main\UnrealEngineModLoader\UnrealEngineModLoader\Utilities\Logger.h(136,34): warning C4251: 'Log::LogArray': class 'std::vector<std::string,std::allocator<std::string>>' needs to have dll-interface to be used by clients of class 'Log'
-G:\MegaModLoaderUMLcustomBuild\UnrealModLoader-main\UnrealEngineModLoader\UnrealEngineModLoader\Utilities\Logger.h(136,14): message : see declaration of 'std::vector<std::string,std::allocator<std::string>>'
-G:\MegaModLoaderUMLcustomBuild\UnrealModLoader-main\UnrealEngineModLoader\UnrealEngineModLoader\GameInfo\GameInfo.h(49,14): warning C4251: 'GameProfile::ProfileName': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' needs to have dll-interface to be used by clients of class 'GameProfile'
+﻿  GameInfo.cpp
+E:\Downloads\MultiMod\MegaModLoaderUMLcustomBuild\UnrealModLoader-main\UnrealEngineModLoader\UnrealEngineModLoader\GameInfo\GameInfo.h(49,14): warning C4251: 'GameProfile::ProfileName': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' needs to have dll-interface to be used by clients of class 'GameProfile'
 C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.34.31933\include\xstring(5297,17): message : see declaration of 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'
-G:\MegaModLoaderUMLcustomBuild\UnrealModLoader-main\UnrealEngineModLoader\UnrealEngineModLoader\GameInfo\GameInfo.h(50,14): warning C4251: 'GameProfile::LoaderPath': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' needs to have dll-interface to be used by clients of class 'GameProfile'
+E:\Downloads\MultiMod\MegaModLoaderUMLcustomBuild\UnrealModLoader-main\UnrealEngineModLoader\UnrealEngineModLoader\GameInfo\GameInfo.h(50,14): warning C4251: 'GameProfile::LoaderPath': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' needs to have dll-interface to be used by clients of class 'GameProfile'
 C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.34.31933\include\xstring(5297,17): message : see declaration of 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'
-G:\MegaModLoaderUMLcustomBuild\UnrealModLoader-main\UnrealEngineModLoader\UnrealEngineModLoader\GameInfo\GameInfo.h(52,14): warning C4251: 'GameProfile::BeginPlayOverwrite': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' needs to have dll-interface to be used by clients of class 'GameProfile'
+E:\Downloads\MultiMod\MegaModLoaderUMLcustomBuild\UnrealModLoader-main\UnrealEngineModLoader\UnrealEngineModLoader\GameInfo\GameInfo.h(52,14): warning C4251: 'GameProfile::BeginPlayOverwrite': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' needs to have dll-interface to be used by clients of class 'GameProfile'
 C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.34.31933\include\xstring(5297,17): message : see declaration of 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'
-G:\MegaModLoaderUMLcustomBuild\UnrealModLoader-main\UnrealEngineModLoader\UE4\Basic.hpp(216,29): warning C4018: '<': signed/unsigned mismatch
-G:\MegaModLoaderUMLcustomBuild\UnrealModLoader-main\UnrealEngineModLoader\UE4\Basic.hpp(247,78): warning C4018: '>=': signed/unsigned mismatch
-G:\MegaModLoaderUMLcustomBuild\UnrealModLoader-main\UnrealEngineModLoader\UnrealEngineModLoader\Mod\Mod.h(13,14): warning C4251: 'Mod::ModName': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' needs to have dll-interface to be used by clients of class 'Mod'
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.34.31933\include\xstring(5297,17): message : see declaration of 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'
-G:\MegaModLoaderUMLcustomBuild\UnrealModLoader-main\UnrealEngineModLoader\UnrealEngineModLoader\Mod\Mod.h(14,14): warning C4251: 'Mod::ModVersion': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' needs to have dll-interface to be used by clients of class 'Mod'
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.34.31933\include\xstring(5297,17): message : see declaration of 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'
-G:\MegaModLoaderUMLcustomBuild\UnrealModLoader-main\UnrealEngineModLoader\UnrealEngineModLoader\Mod\Mod.h(15,14): warning C4251: 'Mod::ModDescription': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' needs to have dll-interface to be used by clients of class 'Mod'
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.34.31933\include\xstring(5297,17): message : see declaration of 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'
-G:\MegaModLoaderUMLcustomBuild\UnrealModLoader-main\UnrealEngineModLoader\UnrealEngineModLoader\Mod\Mod.h(16,14): warning C4251: 'Mod::ModAuthors': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' needs to have dll-interface to be used by clients of class 'Mod'
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.34.31933\include\xstring(5297,17): message : see declaration of 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'
-G:\MegaModLoaderUMLcustomBuild\UnrealModLoader-main\UnrealEngineModLoader\UnrealEngineModLoader\Mod\Mod.h(17,14): warning C4251: 'Mod::ModLoaderVersion': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' needs to have dll-interface to be used by clients of class 'Mod'
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.34.31933\include\xstring(5297,17): message : see declaration of 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'
-G:\MegaModLoaderUMLcustomBuild\UnrealModLoader-main\UnrealEngineModLoader\UnrealEngineModLoader\Utilities\Globals.h(30,23): warning C4251: 'Global::ModInfoList': class 'std::vector<ModInfo,std::allocator<ModInfo>>' needs to have dll-interface to be used by clients of class 'Global'
-G:\MegaModLoaderUMLcustomBuild\UnrealModLoader-main\UnrealEngineModLoader\UnrealEngineModLoader\Utilities\Globals.h(30,7): message : see declaration of 'std::vector<ModInfo,std::allocator<ModInfo>>'
-G:\MegaModLoaderUMLcustomBuild\UnrealModLoader-main\UnrealEngineModLoader\UnrealEngineModLoader\Utilities\Globals.h(31,14): warning C4251: 'Global::GameName': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' needs to have dll-interface to be used by clients of class 'Global'
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.34.31933\include\xstring(5297,17): message : see declaration of 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'
-G:\MegaModLoaderUMLcustomBuild\UnrealModLoader-main\UnrealEngineModLoader\UnrealEngineModLoader\Utilities\Globals.h(33,26): warning C4251: 'Global::CoreMods': class 'std::vector<Mod *,std::allocator<Mod *>>' needs to have dll-interface to be used by clients of class 'Global'
-G:\MegaModLoaderUMLcustomBuild\UnrealModLoader-main\UnrealEngineModLoader\UnrealEngineModLoader\Utilities\Globals.h(33,7): message : see declaration of 'std::vector<Mod *,std::allocator<Mod *>>'
-G:\MegaModLoaderUMLcustomBuild\UnrealModLoader-main\UnrealEngineModLoader\UnrealEngineModLoader\Utilities\Globals.h(34,33): warning C4251: 'Global::BPFunctionWrappers': class 'std::vector<Global::BPFunctionWrapper,std::allocator<Global::BPFunctionWrapper>>' needs to have dll-interface to be used by clients of class 'Global'
-G:\MegaModLoaderUMLcustomBuild\UnrealModLoader-main\UnrealEngineModLoader\UnrealEngineModLoader\Utilities\Globals.h(34,7): message : see declaration of 'std::vector<Global::BPFunctionWrapper,std::allocator<Global::BPFunctionWrapper>>'
-G:\MegaModLoaderUMLcustomBuild\UnrealModLoader-main\UnrealEngineModLoader\UnrealEngineModLoader\Utilities\Globals.h(35,18): warning C4251: 'Global::eventSystem': class 'EventDispatcher' needs to have dll-interface to be used by clients of class 'Global'
-G:\MegaModLoaderUMLcustomBuild\UnrealModLoader-main\UnrealEngineModLoader\EventSystem.h(39,7): message : see declaration of 'EventDispatcher'
-G:\MegaModLoaderUMLcustomBuild\UnrealModLoader-main\UnrealEngineModLoader\Hooks.cpp(341,44): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.34.31933\include\xstring(2860,53): warning C4244: 'argument': conversion from 'wchar_t' to 'const _Elem', possible loss of data
-          with
-          [
-              _Elem=char
-          ]
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.34.31933\include\xstring(2719,1): message : see reference to function template instantiation 'void std::basic_string<char,std::char_traits<char>,std::allocator<char>>::_Construct_from_iter<wchar_t*,wchar_t*,_Size_type>(_Iter,const _Sent,_Size)' being compiled
-          with
-          [
-              _Size_type=unsigned __int64,
-              _Iter=wchar_t *,
-              _Sent=wchar_t *,
-              _Size=unsigned __int64
-          ]
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.34.31933\include\xstring(2719,37): message : see reference to function template instantiation 'void std::basic_string<char,std::char_traits<char>,std::allocator<char>>::_Construct_from_iter<wchar_t*,wchar_t*,_Size_type>(_Iter,const _Sent,_Size)' being compiled
-          with
-          [
-              _Size_type=unsigned __int64,
-              _Iter=wchar_t *,
-              _Sent=wchar_t *,
-              _Size=unsigned __int64
-          ]
-G:\MegaModLoaderUMLcustomBuild\UnrealModLoader-main\UnrealEngineModLoader\Hooks.cpp(221,1): message : see reference to function template instantiation 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,0>(_Iter,_Iter,const _Alloc &)' being compiled
-          with
-          [
-              _Elem=wchar_t,
-              _Iter=std::_String_iterator<std::_String_val<std::_Simple_types<wchar_t>>>,
-              _Alloc=std::allocator<char>
-          ]
-G:\MegaModLoaderUMLcustomBuild\UnrealModLoader-main\UnrealEngineModLoader\Hooks.cpp(221,23): message : see reference to function template instantiation 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,0>(_Iter,_Iter,const _Alloc &)' being compiled
-          with
-          [
-              _Elem=wchar_t,
-              _Iter=std::_String_iterator<std::_String_val<std::_Simple_types<wchar_t>>>,
-              _Alloc=std::allocator<char>
-          ]
-     Creating library G:\MegaModLoaderUMLcustomBuild\UnrealModLoader-main\UnrealEngineModLoader\x64\Release\UnrealEngineModLoader.lib and object G:\MegaModLoaderUMLcustomBuild\UnrealModLoader-main\UnrealEngineModLoader\x64\Release\UnrealEngineModLoader.exp
+E:\Downloads\MultiMod\MegaModLoaderUMLcustomBuild\UnrealModLoader-main\UnrealEngineModLoader\UnrealEngineModLoader\Utilities\Logger.h(136,34): warning C4251: 'Log::LogArray': class 'std::vector<std::string,std::allocator<std::string>>' needs to have dll-interface to be used by clients of class 'Log'
+E:\Downloads\MultiMod\MegaModLoaderUMLcustomBuild\UnrealModLoader-main\UnrealEngineModLoader\UnrealEngineModLoader\Utilities\Logger.h(136,14): message : see declaration of 'std::vector<std::string,std::allocator<std::string>>'
+E:\Downloads\MultiMod\MegaModLoaderUMLcustomBuild\UnrealModLoader-main\UnrealEngineModLoader\UE4\Basic.hpp(216,29): warning C4018: '<': signed/unsigned mismatch
+E:\Downloads\MultiMod\MegaModLoaderUMLcustomBuild\UnrealModLoader-main\UnrealEngineModLoader\UE4\Basic.hpp(247,78): warning C4018: '>=': signed/unsigned mismatch
+E:\Downloads\MultiMod\MegaModLoaderUMLcustomBuild\UnrealModLoader-main\UnrealEngineModLoader\UnrealEngineModLoader\GameInfo\GameInfo.cpp(186,71): warning C4244: '=': conversion from 'DWORD' to 'uint16_t', possible loss of data
+E:\Downloads\MultiMod\MegaModLoaderUMLcustomBuild\UnrealModLoader-main\UnrealEngineModLoader\UnrealEngineModLoader\GameInfo\GameInfo.cpp(187,71): warning C4244: '=': conversion from 'DWORD' to 'uint16_t', possible loss of data
+E:\Downloads\MultiMod\MegaModLoaderUMLcustomBuild\UnrealModLoader-main\UnrealEngineModLoader\UnrealEngineModLoader\GameInfo\GameInfo.cpp(188,70): warning C4244: '=': conversion from 'DWORD' to 'uint16_t', possible loss of data
+E:\Downloads\MultiMod\MegaModLoaderUMLcustomBuild\UnrealModLoader-main\UnrealEngineModLoader\UnrealEngineModLoader\GameInfo\GameInfo.cpp(189,71): warning C4244: '=': conversion from 'DWORD' to 'uint16_t', possible loss of data
+E:\Downloads\MultiMod\MegaModLoaderUMLcustomBuild\UnrealModLoader-main\UnrealEngineModLoader\UnrealEngineModLoader\GameInfo\GameInfo.cpp(197,69): warning C4244: '=': conversion from 'DWORD' to 'uint16_t', possible loss of data
+E:\Downloads\MultiMod\MegaModLoaderUMLcustomBuild\UnrealModLoader-main\UnrealEngineModLoader\UnrealEngineModLoader\GameInfo\GameInfo.cpp(203,77): warning C4244: '=': conversion from 'DWORD' to 'uint16_t', possible loss of data
+E:\Downloads\MultiMod\MegaModLoaderUMLcustomBuild\UnrealModLoader-main\UnrealEngineModLoader\UnrealEngineModLoader\GameInfo\GameInfo.cpp(204,74): warning C4244: '=': conversion from 'DWORD' to 'uint16_t', possible loss of data
+E:\Downloads\MultiMod\MegaModLoaderUMLcustomBuild\UnrealModLoader-main\UnrealEngineModLoader\UnrealEngineModLoader\GameInfo\GameInfo.cpp(205,80): warning C4244: '=': conversion from 'DWORD' to 'uint16_t', possible loss of data
+E:\Downloads\MultiMod\MegaModLoaderUMLcustomBuild\UnrealModLoader-main\UnrealEngineModLoader\UnrealEngineModLoader\GameInfo\GameInfo.cpp(211,81): warning C4244: '=': conversion from 'DWORD' to 'uint16_t', possible loss of data
+E:\Downloads\MultiMod\MegaModLoaderUMLcustomBuild\UnrealModLoader-main\UnrealEngineModLoader\UnrealEngineModLoader\GameInfo\GameInfo.cpp(212,72): warning C4244: '=': conversion from 'DWORD' to 'uint16_t', possible loss of data
+E:\Downloads\MultiMod\MegaModLoaderUMLcustomBuild\UnrealModLoader-main\UnrealEngineModLoader\UnrealEngineModLoader\GameInfo\GameInfo.cpp(218,75): warning C4244: '=': conversion from 'DWORD' to 'uint16_t', possible loss of data
+E:\Downloads\MultiMod\MegaModLoaderUMLcustomBuild\UnrealModLoader-main\UnrealEngineModLoader\UnrealEngineModLoader\GameInfo\GameInfo.cpp(219,73): warning C4244: '=': conversion from 'DWORD' to 'uint16_t', possible loss of data
+E:\Downloads\MultiMod\MegaModLoaderUMLcustomBuild\UnrealModLoader-main\UnrealEngineModLoader\UnrealEngineModLoader\GameInfo\GameInfo.cpp(223,70): warning C4244: '=': conversion from 'DWORD' to 'uint16_t', possible loss of data
+E:\Downloads\MultiMod\MegaModLoaderUMLcustomBuild\UnrealModLoader-main\UnrealEngineModLoader\UnrealEngineModLoader\GameInfo\GameInfo.cpp(224,70): warning C4244: '=': conversion from 'DWORD' to 'uint16_t', possible loss of data
+     Creating library E:\Downloads\MultiMod\MegaModLoaderUMLcustomBuild\UnrealModLoader-main\UnrealEngineModLoader\x64\Release\UnrealEngineModLoader.lib and object E:\Downloads\MultiMod\MegaModLoaderUMLcustomBuild\UnrealModLoader-main\UnrealEngineModLoader\x64\Release\UnrealEngineModLoader.exp
 LINK : warning LNK4098: defaultlib 'LIBCMTD' conflicts with use of other libs; use /NODEFAULTLIB:library
   Generating code
-  2 of 4193 functions (<0.1%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
-    76 functions had inline decision re-evaluated but remain unchanged
+E:\Downloads\MultiMod\MegaModLoaderUMLcustomBuild\UnrealModLoader-main\UnrealEngineModLoader\UnrealEngineModLoader\Utilities\Logger.h(133): warning C4715: 'Log::DumpLog': not all control paths return a value
+E:\Downloads\MultiMod\MegaModLoaderUMLcustomBuild\UnrealModLoader-main\UnrealEngineModLoader\UnrealEngineModLoader\Utilities\EngineDefFinder.cpp(302): warning C4715: 'ClassDefFinder::GetOverallUStructSize': not all control paths return a value
+  4173 of 4197 functions (99.4%) were compiled, the rest were copied from previous compilation.
+    53 functions were new in current compilation
+    2 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
-  UnrealEngineModLoader.vcxproj -> G:\MegaModLoaderUMLcustomBuild\UnrealModLoader-main\UnrealEngineModLoader\x64\Release\UnrealEngineModLoader.dll
+  UnrealEngineModLoader.vcxproj -> E:\Downloads\MultiMod\MegaModLoaderUMLcustomBuild\UnrealModLoader-main\UnrealEngineModLoader\x64\Release\UnrealEngineModLoader.dll

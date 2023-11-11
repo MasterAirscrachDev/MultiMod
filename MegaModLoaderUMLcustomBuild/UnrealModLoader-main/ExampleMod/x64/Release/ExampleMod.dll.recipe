@@ -2,10 +2,10 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-      <FullPath>G:\MegaModLoaderUMLcustomBuild\UnrealModLoader-main\UnrealEngineModLoader\x64\Release\UnrealEngineModLoader.dll</FullPath>
+      <FullPath>E:\Downloads\MultiMod\MegaModLoaderUMLcustomBuild\UnrealModLoader-main\UnrealEngineModLoader\x64\Release\UnrealEngineModLoader.dll</FullPath>
     </ProjectOutput>
     <ProjectOutput>
-      <FullPath>G:\MegaModLoaderUMLcustomBuild\UnrealModLoader-main\UnrealEngineModLoader\x64\Release\ExampleMod.dll</FullPath>
+      <FullPath>E:\Downloads\MultiMod\MegaModLoaderUMLcustomBuild\UnrealModLoader-main\UnrealEngineModLoader\x64\Release\ExampleMod.dll</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />
