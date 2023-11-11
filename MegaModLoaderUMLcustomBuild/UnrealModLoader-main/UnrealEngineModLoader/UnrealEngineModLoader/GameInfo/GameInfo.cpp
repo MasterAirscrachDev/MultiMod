@@ -5,6 +5,8 @@
 #include <filesystem>
 #include "INI.h"
 #include <fstream>
+#include <sys/stat.h>
+#include <unistd.h>
 #include "Utilities/Pattern.h"
 #include "Utilities/Version.h"
 #include "../Hooks.h"
@@ -72,12 +74,10 @@ void SetupProfile(std::string Path)
 		std::ifstream file("Profile");
 		Log::Dmg("Loading Profile: %s", gamename.c_str());
 		if(gamename == "SB"){
-			ifstream f("SBMultiModManager.exe".c_str());
-    		if(f.good()){
+    		if((access("SBMultiModManager.exe".c_str(), F_OK ) != -1 )){
 				//run SBMultiModManager.exe
 				system("SBMultiModManager.exe");
 			}
-			f.close();
 		}
 
 		INI GameInfo(Profile, true);
