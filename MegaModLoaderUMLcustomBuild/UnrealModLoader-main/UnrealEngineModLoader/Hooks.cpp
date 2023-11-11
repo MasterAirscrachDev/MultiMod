@@ -78,6 +78,8 @@ namespace Hooks
 						myfile << text.ToString().c_str(); //write the text to the file
 						myfile.flush(); //flush the file
 						myfile.close(); //close the file
+						Log::Info("Saved Text To File, deleting file stream");
+						delete &myfile; //delete the file stream
 						 
 					}
 				}
@@ -162,7 +164,7 @@ namespace Hooks
 						std::cout << "Lalt 2.11" << std::endl;
 						//UE4::SetVariable<UE4::FString>(obj, "LoadTextFromFileReturnValue", ret);
 						std::cout << "Lalt 2.12" << std::endl;
-						delete &ret;
+						//delete &ret;
 						std::cout << "Lalt 2.13" << std::endl;
 						//delete &ws;
 						std::cout << ws.c_str() << std::endl;
