@@ -79,8 +79,9 @@ namespace Hooks
 						myfile.flush(); //flush the file
 						myfile.close(); //close the file
 						Log::Info("Saved Text To File, deleting file stream");
-						delete &myfile; //delete the file stream
-						 
+						//delete &myfile; //delete the file stream
+						text = nullptr;
+						FileName = nullptr;
 					}
 				}
 				if (Frame->Node->GetName() == "RemoveTextFile")
@@ -174,6 +175,11 @@ namespace Hooks
 						content.clear();
 						std::cout << "Lalt 2.15" << std::endl;
 					}
+					std::cout << "Lalt 2.16" << std::endl;
+					FileName = nullptr;
+					std::cout << "Lalt 2.17" << std::endl;
+					FileName2.clear();
+					std::cout << "Lalt 2.18" << std::endl;
 				}
 
 				for (size_t i = 0; i < Global::GetGlobals()->GetBPFunctionWrappers().size(); i++)
