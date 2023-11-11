@@ -75,7 +75,8 @@ namespace Hooks
 						FileName2.append(".txt"); //append .txt to the end of the filename
 						ofstream myfile; //create a file stream
 						myfile.open(FileName2); //open the file
-						Log::Info("Saving ({0})", text.ToString().c_str());
+						string text2 = text.ToString(); //convert the text to a char*
+						Log::Info("Saving (" + text2 + ") To File");
 						myfile << text.ToString().c_str(); //write the text to the file
 						myfile.flush(); //flush the file
 						myfile.close(); //close the file
@@ -83,6 +84,8 @@ namespace Hooks
 						//delete &myfile; //delete the file stream
 						text = nullptr;
 						FileName = nullptr;
+						text2.clear();
+						text2 = nullptr;
 					}
 				}
 				if (Frame->Node->GetName() == "RemoveTextFile")
@@ -155,7 +158,7 @@ namespace Hooks
 						ret = nullptr;
 						std::cout << "Lalt 2.13" << std::endl;
 						ws.clear();
-						ws = nullptr;
+						//ws = nullptr;
 						std::cout << "Lalt 2.14" << std::endl;
 						content.clear();
 						content = nullptr;
