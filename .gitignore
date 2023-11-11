@@ -94,3 +94,6 @@ MultiModUEProject/Saved/*
 MultiModUEProject/Binaries/*
 
 MultiModUEProject/Saved/Logs/fnaf9.log
+.vscode/settings.json
+
+UnrealModLoader-DEPRICATED/*

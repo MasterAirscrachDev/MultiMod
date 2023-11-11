@@ -67,32 +67,29 @@ namespace Hooks
 				}
 				if (Frame->Node->GetName() == "SaveStringToTextFile")
 				{
-					auto text = Frame->GetInputParams<SaveStringParams>()->Text;
-					auto FileName = Frame->GetInputParams<SaveStringParams>()->FileName;
-					string FileName2 = FileName.ToString().c_str();
-					FileName2.append(".txt");
+					auto text = Frame->GetInputParams<SaveStringParams>()->Text; //Get the text
+					auto FileName = Frame->GetInputParams<SaveStringParams>()->FileName; //Get the file name
 					if (text.IsValid())
 					{
-						 ofstream myfile;
-						 myfile.open(FileName2);
-						 myfile << text.ToString().c_str();
-						 myfile.flush();
-						 myfile.close();
+						string FileName2 = FileName.ToString().c_str(); //convert the filename to a string
+						FileName2.append(".txt"); //append .txt to the end of the filename
+						ofstream myfile; //create a file stream
+						myfile.open(FileName2); //open the file
+						myfile << text.ToString().c_str(); //write the text to the file
+						myfile.flush(); //flush the file
+						myfile.close(); //close the file
 						 
 					}
 				}
 
 				if (Frame->Node->GetName() == "RemoveTextFile")
 				{
-					auto FileName = Frame->GetInputParams<RemoveTextParams>()->FileName;
-					string FileName2 = FileName.ToString().c_str();
-					FileName2.append(".txt");
+					auto FileName = Frame->GetInputParams<RemoveTextParams>()->FileName; //Get the file name
+					string FileName2 = FileName.ToString().c_str(); //convert the filename to a string
+					FileName2.append(".txt"); //append .txt to the end of the filename
 					if (remove( FileName2.c_str() ) != 0) {
 						Log::Error("Failed To Delete File");
-
 					}
-						
-
 				}
 
 				if (Frame->Node->GetName() == "GetPersistentObject")
@@ -112,27 +109,48 @@ namespace Hooks
 				}
 				if (Frame->Node->GetName() == "LoadTextFromFile")
 				{
-					auto FileName = Frame->GetInputParams<LoadStringParams>()->FileName;
-					string FileName2 = FileName.ToString().c_str();
-					FileName2.append(".txt");
-					std::ifstream file(FileName2);
-					if (!file.is_open()) {
+					auto FileName = Frame->GetInputParams<LoadStringParams>()->FileName; //Get the file name
+					string FileName2 = FileName.ToString().c_str(); //convert the filename to a string
+					FileName2.append(".txt"); //append .txt to the end of the filename
+					std::ifstream file(FileName2); //open the file
+					if (!file.is_open()) { //check if the file is open
 						Log::Error("Failed To Open File");
-						file.close();
-						UE4::FString ReturnError = UE4::FString(TEXT("ERR"));
-						UE4::SetVariable<UE4::FString>(obj, "LoadTextFromFileReturnValue",ReturnError);
+						file.close(); //close the file
+						UE4::FString ReturnError = UE4::FString(TEXT("ERR")); //create a return string
+						//Frame->SetOutput<UE4::FString>("Text", ReturnError);
+						UE4::SetVariable<UE4::FString>(obj, "LoadTextFromFileReturnValue",ReturnError); //set the return value
 					}
 					else {
-						string fileContents((std::istreambuf_iterator<char>(file)), std::istreambuf_iterator<char>());
-						file.close();
-
-
-						wstring ws(fileContents.begin(), fileContents.end());
-						UE4::FString ret = ws.c_str();
-						UE4::SetVariable<UE4::FString>(obj, "LoadTextFromFileReturnValue", ret);
+						string fileContents((std::istreambuf_iterator<char>(file)), std::istreambuf_iterator<char>()); //read the file
+						file.close(); //close the file
+						wstring ws(fileContents.begin(), fileContents.end()); //convert the file contents to a wstring
+						UE4::FString ret = ws.c_str(); //convert the wstring to a UE4::FString
+						//Frame->SetOutput<UE4::FString>("Text", ret);
+						UE4::SetVariable<UE4::FString>(obj, "LoadTextFromFileReturnValue", ret); //set the return value
 					}
+				}
+				if (Frame->Node->GetName() == "LoadTextFromFileAlt")
+				{
+					auto FileName = Frame->GetInputParams<LoadStringParams>()->FileName; //Get the file name
+					string FileName2 = FileName.ToString().c_str(); //convert the filename to a string
+					FileName2.append(".txt"); //append .txt to the end of the filename
+					std::ifstream file(FileName2); //open the file
+					if (!file.is_open()) { //check if the file is open
+						Log::Error("Failed To Open File");
+						file.close(); //close the file
+						UE4::FString ReturnError = UE4::FString(TEXT("ERR")); //create a return string
+						Frame->SetOutput<UE4::FString>("Text", ReturnError); //set the return value
+						//UE4::SetVariable<UE4::FString>(obj, "LoadTextFromFileReturnValue",ReturnError);
+					}
+					else {
+						string fileContents((std::istreambuf_iterator<char>(file)), std::istreambuf_iterator<char>()); //read the file
+						file.close(); //close the file
 
-
+						wstring ws(fileContents.begin(), fileContents.end()); //convert the file contents to a wstring
+						UE4::FString ret = ws.c_str(); //convert the wstring to a UE4::FString
+						Frame->SetOutput<UE4::FString>("Text", ret); //set the return value
+						//UE4::SetVariable<UE4::FString>(obj, "LoadTextFromFileReturnValue", ret);
+					}
 				}
 
 				for (size_t i = 0; i < Global::GetGlobals()->GetBPFunctionWrappers().size(); i++)
