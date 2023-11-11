@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project>
+  <ProjectOutputs>
+    <ProjectOutput>
+      <FullPath>G:\MegaModLoaderUMLcustomBuild\UnrealModLoader-main\UnrealEngineModLoader\x64\Release\UnrealEngineModLoader.dll</FullPath>
+    </ProjectOutput>
+    <ProjectOutput>
+      <FullPath>G:\MegaModLoaderUMLcustomBuild\UnrealModLoader-main\UnrealEngineModLoader\x64\Release\ExampleMod.dll</FullPath>
+    </ProjectOutput>
+  </ProjectOutputs>
+  <ContentFiles />
+  <SatelliteDlls />
+  <NonRecipeFileRefs />
+</Project>
