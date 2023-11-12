@@ -114,28 +114,6 @@ namespace Hooks
 				}
 				if (Frame->Node->GetName() == "LoadTextFromFile")
 				{
-					auto FileName = Frame->GetInputParams<LoadStringParams>()->FileName; //Get the file name
-					string FileName2 = FileName.ToString().c_str(); //convert the filename to a string
-					FileName2.append(".txt"); //append .txt to the end of the filename
-					std::ifstream file(FileName2); //open the file
-					if (!file.is_open()) { //check if the file is open
-						Log::Error("Failed To Open File");
-						file.close(); //close the file
-						UE4::FString ReturnError = UE4::FString(TEXT("ERR")); //create a return string
-						//Frame->SetOutput<UE4::FString>("Text", ReturnError);
-						UE4::SetVariable<UE4::FString>(obj, "LoadTextFromFileReturnValue",ReturnError); //set the return value
-					}
-					else {
-						string fileContents((std::istreambuf_iterator<char>(file)), std::istreambuf_iterator<char>()); //read the file
-						file.close(); //close the file
-						wstring ws(fileContents.begin(), fileContents.end()); //convert the file contents to a wstring
-						UE4::FString ret = ws.c_str(); //convert the wstring to a UE4::FString
-						//Frame->SetOutput<UE4::FString>("Text", ret);
-						UE4::SetVariable<UE4::FString>(obj, "LoadTextFromFileReturnValue", ret); //set the return value
-					}
-				}
-				if (Frame->Node->GetName() == "LoadTextFromFileAlt")
-				{
 					//print Lalt 1
 					auto FileName = Frame->GetInputParams<LoadStringParams>()->FileName; //Get the file name
 					string FileName2 = FileName.ToString().c_str(); //convert the filename to a string
@@ -157,7 +135,7 @@ namespace Hooks
 						Frame->SetOutput<UE4::FString>("Text", UE4::FString(ret)); //set the return value
 						ret = nullptr;
 						std::cout << "Lalt 2.13" << std::endl;
-						ws.clear();
+						//ws.clear(); //this causes a 0x000000000000000000 crash
 						//ws = nullptr;
 						std::cout << "Lalt 2.14" << std::endl;
 						content.clear();
