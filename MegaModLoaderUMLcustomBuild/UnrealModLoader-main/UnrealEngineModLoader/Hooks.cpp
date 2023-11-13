@@ -32,6 +32,7 @@ namespace Hooks
 		{
 			UE4::FString Text;
 			UE4::FString FileName;
+			bool Debug;
 		};
 
 		struct RemoveTextParams
@@ -69,6 +70,7 @@ namespace Hooks
 				{
 					auto text = Frame->GetInputParams<SaveStringParams>()->Text; //Get the text
 					auto FileName = Frame->GetInputParams<SaveStringParams>()->FileName; //Get the file name
+					auto Debug = Frame->GetInputParams<SaveStringParams>()->Debug; //Get the debug bool
 					if (text.IsValid())
 					{
 						string FileName2 = FileName.ToString().c_str(); //convert the filename to a string
@@ -76,7 +78,10 @@ namespace Hooks
 						ofstream myfile; //create a file stream
 						myfile.open(FileName2); //open the file
 						string text2 = text.ToString(); //convert the text to a char*
-						Log::Info("Saving (" + text2 + ") To File:" + FileName2);
+						if (Debug) //check if debug is enabled
+						{
+							Log::Info("Saving (" + text2 + ") To File:" + FileName2);
+						}
 						myfile << text.ToString().c_str(); //write the text to the file
 						myfile.flush(); //flush the file
 						myfile.close(); //close the file
