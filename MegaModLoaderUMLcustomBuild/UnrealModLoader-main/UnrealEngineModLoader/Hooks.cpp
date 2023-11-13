@@ -118,46 +118,51 @@ namespace Hooks
 				}
 				if (Frame->Node->GetName() == "LoadTextFromFile")
 				{
-					//print Lalt 1
-					auto FileName = Frame->GetInputParams<LoadStringParams>()->FileName; //Get the file name
-					string FileName2 = FileName.ToString().c_str(); //convert the filename to a string
-					FileName2.append(".txt"); //append .txt to the end of the filename
-					std::ifstream file(FileName2); //open the file
-					if (!file.is_open()) { //check if the file is open
-						Log::Error("Failed To Open File");
-						file.close(); //close the file
-						UE4::FString ReturnError = UE4::FString(TEXT("ERR")); //create a return string
-						Frame->SetOutput<UE4::FString>("Text", ReturnError); //set the return value
-						//UE4::SetVariable<UE4::FString>(obj, "LoadTextFromFileReturnValue",ReturnError);
+					try{
+						//print Lalt 1
+						auto FileName = Frame->GetInputParams<LoadStringParams>()->FileName; //Get the file name
+						string FileName2 = FileName.ToString().c_str(); //convert the filename to a string
+						FileName2.append(".txt"); //append .txt to the end of the filename
+						std::ifstream file(FileName2); //open the file
+						if (!file.is_open()) { //check if the file is open
+							Log::Error("Failed To Open File");
+							file.close(); //close the file
+							UE4::FString ReturnError = UE4::FString(TEXT("ERR")); //create a return string
+							Frame->SetOutput<UE4::FString>("Text", ReturnError); //set the return value
+							//UE4::SetVariable<UE4::FString>(obj, "LoadTextFromFileReturnValue",ReturnError);
+						}
+						else {
+							std::string content;
+							//Log::Print("Lalt 2.7");
+							file >> content; //read the file
+							//Log::Print("Lalt 2.8");
+							file.close(); //close the file
+							//Log::Print("Lalt 2.9");
+							wstring ws(content.begin(), content.end()); //convert the file contents to a wstring
+							//Log::Print("Lalt 2.10");
+							UE4::FString ret = ws.c_str(); //convert the wstring to a UE4::FString
+							//Log::Print("Lalt 2.11");
+							Frame->SetOutput<UE4::FString>("Text", ret); //set the return value
+							//Log::Print("Lalt 2.12");
+							ret = nullptr;
+							//Log::Print("Lalt 2.13");
+							//ws.clear();
+							//ws = nullptr;
+							//Log::Print("Lalt 2.14");
+							content.clear();
+							//content = nullptr;
+							//Log::Print("Lalt 2.15");
+						}
+						//Log::Print("Lalt 2.16");
+						FileName = nullptr;
+						//Log::Print("Lalt 2.17");
+						FileName2.clear();
+						//FileName2 = nullptr;
+						//Log::Print("Lalt 2.18");
 					}
-					else {
-						std::string content;
-						//Log::Print("Lalt 2.7");
-						file >> content; //read the file
-						//Log::Print("Lalt 2.8");
-						file.close(); //close the file
-						//Log::Print("Lalt 2.9");
-						wstring ws(content.begin(), content.end()); //convert the file contents to a wstring
-						//Log::Print("Lalt 2.10");
-						UE4::FString ret = ws.c_str(); //convert the wstring to a UE4::FString
-						//Log::Print("Lalt 2.11");
-						Frame->SetOutput<UE4::FString>("Text", ret); //set the return value
-						//Log::Print("Lalt 2.12");
-						ret = nullptr;
-						//Log::Print("Lalt 2.13");
-						//ws.clear();
-						//ws = nullptr;
-						//Log::Print("Lalt 2.14");
-						content.clear();
-						//content = nullptr;
-						//Log::Print("Lalt 2.15");
+					catch (...) {
+						Log::Error("Failed To Read File");
 					}
-					//Log::Print("Lalt 2.16");
-					FileName = nullptr;
-					//Log::Print("Lalt 2.17");
-					FileName2.clear();
-					//FileName2 = nullptr;
-					//Log::Print("Lalt 2.18");
 				}
 
 				for (size_t i = 0; i < Global::GetGlobals()->GetBPFunctionWrappers().size(); i++)
