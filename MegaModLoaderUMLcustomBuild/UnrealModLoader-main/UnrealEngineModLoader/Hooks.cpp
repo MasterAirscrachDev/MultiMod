@@ -76,7 +76,7 @@ namespace Hooks
 						ofstream myfile; //create a file stream
 						myfile.open(FileName2); //open the file
 						string text2 = text.ToString(); //convert the text to a char*
-						Log::Info("Saving (" + text2 + ") To File");
+						Log::Info("Saving (" + text2 + ") To File:" + FileName2);
 						myfile << text.ToString().c_str(); //write the text to the file
 						myfile.flush(); //flush the file
 						myfile.close(); //close the file
@@ -132,27 +132,32 @@ namespace Hooks
 					}
 					else {
 						std::string content;
+						Log::Print("Lalt 2.7");
 						file >> content; //read the file
+						Log::Print("Lalt 2.8");
 						file.close(); //close the file
+						Log::Print("Lalt 2.9");
 						wstring ws(content.begin(), content.end()); //convert the file contents to a wstring
+						Log::Print("Lalt 2.10");
 						UE4::FString ret = ws.c_str(); //convert the wstring to a UE4::FString
-						Frame->SetOutput<UE4::FString>("Text", UE4::FString(ret)); //set the return value
-						std::cout << "Lalt 2.12" << std::endl;
+						Log::Print("Lalt 2.11");
+						Frame->SetOutput<UE4::FString>("Text", ret); //set the return value
+						Log::Print("Lalt 2.12");
 						ret = nullptr;
-						std::cout << "Lalt 2.13" << std::endl;
-						//ws.clear(); //this causes a 0x000000000000000000 crash
+						Log::Print("Lalt 2.13");
+						//ws.clear();
 						//ws = nullptr;
-						std::cout << "Lalt 2.14" << std::endl;
+						//Log::Print("Lalt 2.14");
 						content.clear();
 						content = nullptr;
-						std::cout << "Lalt 2.15" << std::endl;
+						Log::Print("Lalt 2.15");
 					}
-					std::cout << "Lalt 2.16" << std::endl;
+					Log::Print("Lalt 2.16");
 					FileName = nullptr;
-					std::cout << "Lalt 2.17" << std::endl;
+					Log::Print("Lalt 2.17");
 					FileName2.clear();
 					FileName2 = nullptr;
-					std::cout << "Lalt 2.18" << std::endl;
+					Log::Print("Lalt 2.18");
 				}
 
 				for (size_t i = 0; i < Global::GetGlobals()->GetBPFunctionWrappers().size(); i++)
