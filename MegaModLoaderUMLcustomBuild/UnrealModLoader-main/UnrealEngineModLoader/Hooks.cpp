@@ -161,6 +161,7 @@ namespace Hooks
 						//Log::Print("Lalt 2.18");
 					}
 					catch (...) {
+						std::cout << "Failed To Read File" << std::endl;
 						Log::Error("Failed To Read File");
 					}
 				}
