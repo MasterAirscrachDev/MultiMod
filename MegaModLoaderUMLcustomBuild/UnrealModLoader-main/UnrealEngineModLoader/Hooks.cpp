@@ -83,9 +83,13 @@ namespace Hooks
 						Log::Info("Saved Text To File, deleting file stream");
 						//delete &myfile; //delete the file stream
 						text = nullptr;
+						Log::Info("Save 2");
 						FileName = nullptr;
+						Log::Info("Save 3");
 						text2.clear();
+						Log::Info("Save 4");
 						text2 = nullptr;
+						Log::Info("Save done");
 					}
 				}
 				if (Frame->Node->GetName() == "RemoveTextFile")
