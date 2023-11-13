@@ -137,6 +137,7 @@ namespace Hooks
 						wstring ws(content.begin(), content.end()); //convert the file contents to a wstring
 						UE4::FString ret = ws.c_str(); //convert the wstring to a UE4::FString
 						Frame->SetOutput<UE4::FString>("Text", UE4::FString(ret)); //set the return value
+						std::cout << "Lalt 2.12" << std::endl;
 						ret = nullptr;
 						std::cout << "Lalt 2.13" << std::endl;
 						//ws.clear(); //this causes a 0x000000000000000000 crash
