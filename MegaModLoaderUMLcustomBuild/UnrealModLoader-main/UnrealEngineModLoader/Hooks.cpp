@@ -132,32 +132,32 @@ namespace Hooks
 					}
 					else {
 						std::string content;
-						Log::Print("Lalt 2.7");
+						//Log::Print("Lalt 2.7");
 						file >> content; //read the file
-						Log::Print("Lalt 2.8");
+						//Log::Print("Lalt 2.8");
 						file.close(); //close the file
-						Log::Print("Lalt 2.9");
+						//Log::Print("Lalt 2.9");
 						wstring ws(content.begin(), content.end()); //convert the file contents to a wstring
-						Log::Print("Lalt 2.10");
+						//Log::Print("Lalt 2.10");
 						UE4::FString ret = ws.c_str(); //convert the wstring to a UE4::FString
-						Log::Print("Lalt 2.11");
+						//Log::Print("Lalt 2.11");
 						Frame->SetOutput<UE4::FString>("Text", ret); //set the return value
-						Log::Print("Lalt 2.12");
+						//Log::Print("Lalt 2.12");
 						ret = nullptr;
-						Log::Print("Lalt 2.13");
+						//Log::Print("Lalt 2.13");
 						//ws.clear();
 						//ws = nullptr;
 						//Log::Print("Lalt 2.14");
 						content.clear();
-						content = nullptr;
-						Log::Print("Lalt 2.15");
+						//content = nullptr;
+						//Log::Print("Lalt 2.15");
 					}
-					Log::Print("Lalt 2.16");
+					//Log::Print("Lalt 2.16");
 					FileName = nullptr;
-					Log::Print("Lalt 2.17");
+					//Log::Print("Lalt 2.17");
 					FileName2.clear();
-					FileName2 = nullptr;
-					Log::Print("Lalt 2.18");
+					//FileName2 = nullptr;
+					//Log::Print("Lalt 2.18");
 				}
 
 				for (size_t i = 0; i < Global::GetGlobals()->GetBPFunctionWrappers().size(); i++)
