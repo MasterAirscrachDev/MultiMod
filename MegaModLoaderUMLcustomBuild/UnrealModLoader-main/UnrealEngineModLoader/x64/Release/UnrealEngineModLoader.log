@@ -29,7 +29,7 @@ E:\Downloads\MultiMod\MegaModLoaderUMLcustomBuild\UnrealModLoader-main\UnrealEng
 E:\Downloads\MultiMod\MegaModLoaderUMLcustomBuild\UnrealModLoader-main\UnrealEngineModLoader\UnrealEngineModLoader\Utilities\Globals.h(34,7): message : see declaration of 'std::vector<Global::BPFunctionWrapper,std::allocator<Global::BPFunctionWrapper>>'
 E:\Downloads\MultiMod\MegaModLoaderUMLcustomBuild\UnrealModLoader-main\UnrealEngineModLoader\UnrealEngineModLoader\Utilities\Globals.h(35,18): warning C4251: 'Global::eventSystem': class 'EventDispatcher' needs to have dll-interface to be used by clients of class 'Global'
 E:\Downloads\MultiMod\MegaModLoaderUMLcustomBuild\UnrealModLoader-main\UnrealEngineModLoader\EventSystem.h(39,7): message : see declaration of 'EventDispatcher'
-E:\Downloads\MultiMod\MegaModLoaderUMLcustomBuild\UnrealModLoader-main\UnrealEngineModLoader\Hooks.cpp(376,44): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+E:\Downloads\MultiMod\MegaModLoaderUMLcustomBuild\UnrealModLoader-main\UnrealEngineModLoader\Hooks.cpp(385,44): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
 C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.34.31933\include\xstring(2860,53): warning C4244: 'argument': conversion from 'wchar_t' to 'const _Elem', possible loss of data
           with
           [
@@ -51,14 +51,14 @@ C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.34.3193
               _Sent=wchar_t *,
               _Size=unsigned __int64
           ]
-E:\Downloads\MultiMod\MegaModLoaderUMLcustomBuild\UnrealModLoader-main\UnrealEngineModLoader\Hooks.cpp(256,1): message : see reference to function template instantiation 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,0>(_Iter,_Iter,const _Alloc &)' being compiled
+E:\Downloads\MultiMod\MegaModLoaderUMLcustomBuild\UnrealModLoader-main\UnrealEngineModLoader\Hooks.cpp(265,1): message : see reference to function template instantiation 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,0>(_Iter,_Iter,const _Alloc &)' being compiled
           with
           [
               _Elem=wchar_t,
               _Iter=std::_String_iterator<std::_String_val<std::_Simple_types<wchar_t>>>,
               _Alloc=std::allocator<char>
           ]
-E:\Downloads\MultiMod\MegaModLoaderUMLcustomBuild\UnrealModLoader-main\UnrealEngineModLoader\Hooks.cpp(256,23): message : see reference to function template instantiation 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,0>(_Iter,_Iter,const _Alloc &)' being compiled
+E:\Downloads\MultiMod\MegaModLoaderUMLcustomBuild\UnrealModLoader-main\UnrealEngineModLoader\Hooks.cpp(265,23): message : see reference to function template instantiation 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,0>(_Iter,_Iter,const _Alloc &)' being compiled
           with
           [
               _Elem=wchar_t,

@@ -13,6 +13,8 @@
 #include <filesystem>
 #include <string>
 #include <stdio.h>
+#include <locale>
+#include <codecvt>
 using namespace std;
 bool bIsProcessInternalsHooked = false;
 bool GameStateClassInitNotRan = true;
@@ -98,6 +100,10 @@ namespace Hooks
 						//Log::Info("Save 4");
 						//text2 = nullptr;
 						//Log::Info("Save done");
+						if (Debug) //check if debug is enabled
+						{
+							Log::Info("Save Completed.");
+						}
 					}
 				}
 				if (Frame->Node->GetName() == "RemoveTextFile")
@@ -134,11 +140,13 @@ namespace Hooks
 					if (!file.is_open()) { //check if the file is open
 						Log::Error("Failed To Open File");
 						file.close(); //close the file
+						file.clear();
 						UE4::FString ReturnError = UE4::FString(TEXT("ERR")); //create a return string
 						//Frame->SetOutput<UE4::FString>("Text", ReturnError); //set the return value
 						UE4::SetVariable<UE4::FString>(obj, "CData", ReturnError);
 					}
 					else {
+						Log::Info("Opened File");
 						std::string content;
 						//Log::Print("Lalt 2.7");
 						file >> content; //read the file
@@ -160,6 +168,7 @@ namespace Hooks
 						//Log::Print("Lalt 2.14");
 						content.clear();
 						//Log::Print("Lalt 2.15");
+						file.clear();
 					}
 					//Log::Print("Lalt 2.16");
 					FileName = nullptr;
