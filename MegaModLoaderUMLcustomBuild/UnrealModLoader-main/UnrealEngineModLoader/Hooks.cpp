@@ -130,8 +130,17 @@ namespace Hooks
 						}
 					}
 				}
-				if (Frame->Node->GetName() == "GetDataFile")
+				if (Frame->Node->GetName() == "GetDataFile") //this causes a crash on changing levels and loads garbage data to the game????
 				{
+					//MEM SAFE RULES
+					//std::string -> .close();
+					//UE4::FString -> = nullptr;
+					//std::wstring -> .clear();
+					//std::ifstream -> .close(); -> .clear();
+
+
+
+
 					//print Lalt 1
 					auto FileName = Frame->GetInputParams<GetDataParams>()->Filename; //Get the file name
 					string FileName2 = FileName.ToString().c_str(); //convert the filename to a string
@@ -144,6 +153,7 @@ namespace Hooks
 						UE4::FString ReturnError = UE4::FString(TEXT("ERR")); //create a return string
 						//Frame->SetOutput<UE4::FString>("Text", ReturnError); //set the return value
 						UE4::SetVariable<UE4::FString>(obj, "CData", ReturnError);
+						ReturnError = nullptr;
 					}
 					else {
 						Log::Info("Opened File");

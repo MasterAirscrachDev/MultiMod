@@ -102,3 +102,4 @@ MegaModLoaderUMLcustomBuild/UnrealModLoader-main/ExampleMod/x64/Release/*
 MegaModLoaderUMLcustomBuild/UnrealModLoader-main/LoaderAutoInjector/x64/Release/*
 MegaModLoaderUMLcustomBuild/UnrealModLoader-main/UnrealEngineModLauncher/x64/Release/*
 *.tlog
+airQuickTest.bat
