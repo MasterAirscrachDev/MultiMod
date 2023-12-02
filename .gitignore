@@ -103,3 +103,5 @@ MegaModLoaderUMLcustomBuild/UnrealModLoader-main/LoaderAutoInjector/x64/Release/
 MegaModLoaderUMLcustomBuild/UnrealModLoader-main/UnrealEngineModLauncher/x64/Release/*
 *.tlog
 airQuickTest.bat
+MultiModUEProject/Build/WindowsNoEditor/FileOpenOrder/CookerOpenOrder.log
+MultiModUEProject/Build/WindowsNoEditor/FileOpenOrder/EditorOpenOrder.log
