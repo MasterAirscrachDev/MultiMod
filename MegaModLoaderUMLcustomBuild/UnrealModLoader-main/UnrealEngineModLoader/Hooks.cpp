@@ -138,10 +138,6 @@ namespace Hooks
 					//std::wstring -> .clear();
 					//std::ifstream -> .close(); -> .clear();
 
-
-
-
-					//print Lalt 1
 					auto FileName = Frame->GetInputParams<GetDataParams>()->Filename; //Get the file name
 					string FileName2 = FileName.ToString().c_str(); //convert the filename to a string
 					FileName2.append(".txt"); //append .txt to the end of the filename
