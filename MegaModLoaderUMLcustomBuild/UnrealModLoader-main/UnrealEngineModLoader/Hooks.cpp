@@ -153,23 +153,21 @@ namespace Hooks
 					}
 					else {
 						Log::Info("Opened File");
-						std::string content;
-						//Log::Print("Lalt 2.7");
-						file >> content; //read the file
+						string content((std::istreambuf_iterator<char>(file)), std::istreambuf_iterator<char>());
 						Log::Print("Read: (" + content + ")");
 						//Log::Print("Lalt 2.8");
 						file.close(); //close the file
 						//Log::Print("Lalt 2.9");
-						wstring ws(content.begin(), content.end()); //convert the file contents to a wstring
+						//wstring ws(content.begin(), content.end()); //convert the file contents to a wstring
 						//Log::Print("Lalt 2.10");
-						UE4::FString ret = ws.c_str(); //convert the wstring to a UE4::FString
+						//UE4::FString ret = ws.c_str(); //convert the wstring to a UE4::FString
 						//Log::Print("Lalt 2.11");
 						//Frame->SetOutput<UE4::FString>("Text", ret); //set the return value
-						UE4::SetVariable<UE4::FString>(obj, "CData", ret);
+						UE4::SetVariable<UE4::FString>(obj, "CData", UE4::FString(wstring(content.begin(), content.end()).c_str()));
 						//Log::Print("Lalt 2.12");
-						ret = nullptr;
+						//ret = nullptr;
 						//Log::Print("Lalt 2.13");
-						ws.clear();
+						//ws.clear();
 						//ws = nullptr;
 						//Log::Print("Lalt 2.14");
 						content.clear();
