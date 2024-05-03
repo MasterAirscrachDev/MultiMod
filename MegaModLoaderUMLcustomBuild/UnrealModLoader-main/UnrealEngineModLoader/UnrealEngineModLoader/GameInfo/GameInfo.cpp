@@ -58,7 +58,7 @@ void SetupProfile(std::string Path)
 		freopen("CON", "w", LOG_STREAM);
 		Log::Info("Created by ~Russell.J Release V %sa", MODLOADER_VERSION);
 		Log::Dmg("Modified by DmgVol");
-		Log::Omg("Modified even further by OmegaDev & MasterAirscratch");
+		Log::Omg("Modified even further by OmegaDev & MasterAirscrach");
 	}
 
 	if (LoaderInfo.getAs<int>("DEBUG", "DX12", 0) == 1) {

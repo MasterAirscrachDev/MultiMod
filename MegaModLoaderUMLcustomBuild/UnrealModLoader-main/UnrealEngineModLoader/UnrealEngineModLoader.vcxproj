@@ -132,8 +132,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>$(MSBuildProjectDirectory)\MinHook\;$(MSBuildProjectDirectory)\UE4\;$(IncludePath)</IncludePath>
-    <LibraryPath>$(MSBuildProjectDirectory)\MinHook\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(MSBuildProjectDirectory)\MinHook\;$(MSBuildProjectDirectory)\UE4\;$(IncludePath);$(MSBuildProjectDirectory)\libucurl\include\</IncludePath>
+    <LibraryPath>$(MSBuildProjectDirectory)\MinHook\lib;$(LibraryPath);$(MSBuildProjectDirectory)\libcurl\lib;</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -201,6 +201,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
+      <AdditionalDependencies>$(CoreLibraryDependencies);%(AdditionalDependencies);libcurl.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

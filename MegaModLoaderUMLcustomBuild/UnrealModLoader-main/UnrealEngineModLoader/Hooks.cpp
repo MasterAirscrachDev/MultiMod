@@ -15,6 +15,7 @@
 #include <stdio.h>
 #include <locale>
 #include <codecvt>
+#include <curl/curl.h> //TODO: Make this work
 using namespace std;
 bool bIsProcessInternalsHooked = false;
 bool GameStateClassInitNotRan = true;
@@ -54,6 +55,10 @@ namespace Hooks
 		{
 			UE4::FString ModName;
 		};
+		struct MultiSBCallParams
+		{
+			UE4::FString Data;
+		};
 
 		
 
@@ -70,6 +75,18 @@ namespace Hooks
 					{
 						Log::Print("%s", msg.ToString().c_str());
 					}
+				}
+				if (Frame->Node->GetName() == "MultiSBCall")
+				{
+					auto dataIn = Frame->GetInputParams<MultiSBCallParams>()->Data;
+					//send this to chaostree.xyz/multisb
+
+					//This will return a string with the data of all other players
+
+					//return data to mod
+
+					//Profit
+					
 				}
 				if (Frame->Node->GetName() == "SaveStringToTextFile")
 				{
