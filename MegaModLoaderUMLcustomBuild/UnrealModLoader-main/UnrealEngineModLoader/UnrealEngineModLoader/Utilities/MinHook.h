@@ -1,11 +1,11 @@
 #pragma once
 #include <string>
 #include "Logger.h"
-#include "include/MinHook.h"
+#include <MinHook.h>
 #include "Globals.h"
-#ifdef UNREALENGINEMODLOADER_EXPORTS //Stops dumb errors from the ExampleMod shit
-#pragma comment(lib,"../../Minhook/lib/libMinHook-x64-v141-mtd.lib")
-#endif
+//#ifdef UNREALENGINEMODLOADER_EXPORTS //Stops dumb errors from the ExampleMod shit
+#pragma comment(lib,"packages/minhook.1.3.3/lib/native/lib/libMinHook-x64-v141-mtd.lib")
+//#endif
 
 namespace MinHook
 {
@@ -16,7 +16,6 @@ namespace MinHook
 			Log::Error("Failed to initialize MinHook");
 		}
 	}
-
 	template <typename T>
 	static void Add(DWORD_PTR pTarget, LPVOID pDetour, T** ppOriginal, std::string displayName = "")
 	{
@@ -25,7 +24,6 @@ namespace MinHook
 			Log::Error("Failed to create hook: %s", displayName.c_str());
 			return;
 		}
-
 		if (MH_EnableHook((LPVOID)pTarget) != MH_OK)
 		{
 			Log::Error("Failed to enable hook: %s", displayName.c_str());

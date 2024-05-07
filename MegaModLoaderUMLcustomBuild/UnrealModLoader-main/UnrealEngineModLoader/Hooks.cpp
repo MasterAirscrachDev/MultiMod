@@ -1,5 +1,5 @@
 #include "Hooks.h"
-#include "Utilities/MinHook.h"
+#include "Utilities/MinHook.h"		
 #include "GameInfo/GameInfo.h"
 #include "PakLoader.h"
 #include "Utilities/Dumper.h"
@@ -15,7 +15,10 @@
 #include <stdio.h>
 #include <locale>
 #include <codecvt>
-#include <curl/curl.h> //TODO: Make this work
+#include <curl/curl.h>
+//#include <curl.h> //TODO: Make this work
+//#include "curl/curl.h" //cheating
+//#include "libcurl/include/curl/curl.h" //this is bad but it does work
 using namespace std;
 bool bIsProcessInternalsHooked = false;
 bool GameStateClassInitNotRan = true;
@@ -26,40 +29,28 @@ namespace Hooks
 	namespace HookedFunctions
 	{
 		struct PrintStringParams
-		{
-			UE4::FString Message;
-		};
+		{ UE4::FString Message; };
 
-		struct SaveStringParams
-		{
+		struct SaveStringParams {
 			UE4::FString Text;
 			UE4::FString FileName;
 			bool Debug;
 		};
 
 		struct RemoveTextParams
-		{
-			UE4::FString FileName;
-		};
+		{ UE4::FString FileName; };
 
 		struct LoadStringParams
-		{
-			UE4::FString FileName;
-		};
+		{ UE4::FString FileName; };
+
 		struct GetDataParams
-		{
-			UE4::FString Filename;
-		};
+		{ UE4::FString Filename;};
 		
 		struct GetPersistentObject
-		{
-			UE4::FString ModName;
-		};
-		struct MultiSBCallParams
-		{
-			UE4::FString Data;
-		};
+		{ UE4::FString ModName; };
 
+		struct MultiSBCallParams
+		{ UE4::FString Data; };
 		
 
 		PVOID(*origProcessFunction)(UE4::UObject*, UE4::FFrame*, void* const);
@@ -79,8 +70,20 @@ namespace Hooks
 				if (Frame->Node->GetName() == "MultiSBCall")
 				{
 					auto dataIn = Frame->GetInputParams<MultiSBCallParams>()->Data;
+					string text = dataIn.ToString(); //convert the text to a char*
 					//send this to chaostree.xyz/multisb
-
+					CURL* curl;
+					CURLcode res;
+					curl = curl_easy_init();
+					if (curl) {
+						curl_easy_setopt(curl, CURLOPT_URL, "https://chaostree.xyz/multisb");
+						curl_easy_setopt(curl, CURLOPT_POSTFIELDS, text.c_str());
+						res = curl_easy_perform(curl);
+						curl_easy_cleanup(curl);
+						//get the response as a string
+						std::string response = std::to_string(res);
+						UE4::SetVariable<UE4::FString>(obj, "CData", UE4::FString(wstring(response.begin(), response.end()).c_str()));
+					}
 					//This will return a string with the data of all other players
 
 					//return data to mod
@@ -217,6 +220,10 @@ namespace Hooks
 		PVOID hookInitGameState(void* Ret)
 		{
 			Log::Info("GameStateHook");
+
+			//Testing
+			curl_global_init(1);
+			
 			PreBegin_AlreadyLoaded = false;
 			if (GameStateClassInitNotRan)
 			{
