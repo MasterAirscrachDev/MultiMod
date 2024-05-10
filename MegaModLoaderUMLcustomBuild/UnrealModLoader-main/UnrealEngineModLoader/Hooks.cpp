@@ -222,7 +222,7 @@ namespace Hooks
 			Log::Info("GameStateHook");
 
 			//Testing
-			curl_global_init(1);
+			//curl_global_init(CURL_GLOBAL_ALL);
 			
 			PreBegin_AlreadyLoaded = false;
 			if (GameStateClassInitNotRan)
