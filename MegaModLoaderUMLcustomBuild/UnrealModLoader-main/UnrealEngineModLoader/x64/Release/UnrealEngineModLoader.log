@@ -61,7 +61,7 @@ d:\unreal\multimod\megamodloaderumlcustombuild\unrealmodloader-main\unrealengine
           ]
 d:\unreal\multimod\megamodloaderumlcustombuild\unrealmodloader-main\unrealenginemodloader\unrealenginemodloader\utilities\globals.h(35): warning C4251: 'Global::eventSystem': class 'EventDispatcher' needs to have dll-interface to be used by clients of class 'Global'
   d:\unreal\multimod\megamodloaderumlcustombuild\unrealmodloader-main\unrealenginemodloader\eventsystem.h(39): note: see declaration of 'EventDispatcher'
-d:\unreal\multimod\megamodloaderumlcustombuild\unrealmodloader-main\unrealenginemodloader\hooks.cpp(413): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+d:\unreal\multimod\megamodloaderumlcustombuild\unrealmodloader-main\unrealenginemodloader\hooks.cpp(292): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
 d:\unreal\multimod\megamodloaderumlcustombuild\unrealmodloader-main\unrealenginemodloader\unrealenginemodloader\utilities\logger.h(133): warning C4715: 'Log::DumpLog': not all control paths return a value
      Creating library D:\UNREAL\MultiMod\MegaModLoaderUMLcustomBuild\UnrealModLoader-main\UnrealEngineModLoader\x64\Release\UnrealEngineModLoader.lib and object D:\UNREAL\MultiMod\MegaModLoaderUMLcustomBuild\UnrealModLoader-main\UnrealEngineModLoader\x64\Release\UnrealEngineModLoader.exp
   Generating code

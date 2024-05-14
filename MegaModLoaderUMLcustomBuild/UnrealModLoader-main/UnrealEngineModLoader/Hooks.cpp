@@ -75,8 +75,8 @@ namespace Hooks
 					{
 						//add the ascii value of the character to the string
 						str += static_cast<char>(dataIn[i]);	
-						
 					}
+					std::cout << "data is:'" + str + "'" << std::endl;
 					UE4::SetVariable<UE4::FString>(obj, "CData", UE4::FString(wstring(str.begin(), str.end()).c_str()));
 				}
 
