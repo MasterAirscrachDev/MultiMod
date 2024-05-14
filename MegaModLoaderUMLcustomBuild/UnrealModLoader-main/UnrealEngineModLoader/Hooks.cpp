@@ -15,10 +15,6 @@
 #include <stdio.h>
 #include <locale>
 #include <codecvt>
-#include <curl/curl.h>
-//#include <curl.h> //TODO: Make this work
-//#include "curl/curl.h" //cheating
-//#include "libcurl/include/curl/curl.h" //this is bad but it does work
 using namespace std;
 bool bIsProcessInternalsHooked = false;
 bool GameStateClassInitNotRan = true;
@@ -51,6 +47,10 @@ namespace Hooks
 
 		struct MultiSBCallParams
 		{ UE4::FString Data; };
+		struct IntArrayToStringParams
+		{
+			UE4::TArray<int> Array;
+		};
 		
 
 		PVOID(*origProcessFunction)(UE4::UObject*, UE4::FFrame*, void* const);
@@ -67,138 +67,17 @@ namespace Hooks
 						Log::Print("%s", msg.ToString().c_str());
 					}
 				}
-				if (Frame->Node->GetName() == "MultiSBCall")
+				if (Frame->Node->GetName() == "IntArrayToString")
 				{
-					auto dataIn = Frame->GetInputParams<MultiSBCallParams>()->Data;
-					string text = dataIn.ToString(); //convert the text to a char*
-					//send this to chaostree.xyz/multisb
-					CURL* curl;
-					CURLcode res;
-					curl = curl_easy_init();
-					if (curl) {
-						curl_easy_setopt(curl, CURLOPT_URL, "https://chaostree.xyz/multisb");
-						curl_easy_setopt(curl, CURLOPT_POSTFIELDS, text.c_str());
-						res = curl_easy_perform(curl);
-						curl_easy_cleanup(curl);
-						//get the response as a string
-						std::string response = std::to_string(res);
-						UE4::SetVariable<UE4::FString>(obj, "CData", UE4::FString(wstring(response.begin(), response.end()).c_str()));
-					}
-					//This will return a string with the data of all other players
-
-					//return data to mod
-
-					//Profit
-					
-				}
-				if (Frame->Node->GetName() == "SaveStringToTextFile")
-				{
-					auto text = Frame->GetInputParams<SaveStringParams>()->Text; //Get the text
-					auto FileName = Frame->GetInputParams<SaveStringParams>()->FileName; //Get the file name
-					auto Debug = Frame->GetInputParams<SaveStringParams>()->Debug; //Get the debug bool
-					if (text.IsValid())
+					auto dataIn = Frame->GetInputParams<IntArrayToStringParams>()->Array;
+					std::string str = "";
+					for (int i = 0; i < dataIn.Num(); i++)
 					{
-						string FileName2 = FileName.ToString().c_str(); //convert the filename to a string
-						FileName2.append(".txt"); //append .txt to the end of the filename
-						ofstream myfile; //create a file stream
-						myfile.open(FileName2); //open the file
-						string text2 = text.ToString(); //convert the text to a char*
-						if (Debug) //check if debug is enabled
-						{
-							Log::Info("Saving (" + text2 + ") To File:" + FileName2);
-						}
-						myfile << text.ToString().c_str(); //write the text to the file
-						myfile.flush(); //flush the file
-						myfile.close(); //close the file
-						//Log::Info("Saved Text To File, deleting file stream");
-						//delete &myfile; //delete the file stream
-						text = nullptr;
-						//Log::Info("Save 2");
-						FileName = nullptr;
-						//Log::Info("Save 3");
-						text2.clear();
-						//Log::Info("Save 4");
-						//text2 = nullptr;
-						//Log::Info("Save done");
-						if (Debug) //check if debug is enabled
-						{
-							Log::Info("Save Completed.");
-						}
+						//add the ascii value of the character to the string
+						str += static_cast<char>(dataIn[i]);	
+						
 					}
-				}
-				if (Frame->Node->GetName() == "RemoveTextFile")
-				{
-					auto FileName = Frame->GetInputParams<RemoveTextParams>()->FileName; //Get the file name
-					string FileName2 = FileName.ToString().c_str(); //convert the filename to a string
-					FileName2.append(".txt"); //append .txt to the end of the filename
-					if (remove( FileName2.c_str() ) != 0) {
-						Log::Error("Failed To Delete File");
-					}
-				}
-				if (Frame->Node->GetName() == "GetPersistentObject")
-				{
-					auto ModName = Frame->GetInputParams<GetPersistentObject>()->ModName;
-					for (size_t i = 0; i < Global::GetGlobals()->ModInfoList.size(); i++)
-					{
-						auto ModInfo = Global::GetGlobals()->ModInfoList[i];
-						if (ModName.c_str() == ModInfo.ModName)
-						{
-							if (ModInfo.PersistentObject)
-							{
-								UE4::SetVariable<UE4::UObject*>(obj, "GetPersistentObjectReturnValue", ModInfo.PersistentObject);
-							}
-						}
-					}
-				}
-				if (Frame->Node->GetName() == "GetDataFile") //this causes a crash on changing levels and loads garbage data to the game????
-				{
-					//MEM SAFE RULES
-					//std::string -> .close();
-					//UE4::FString -> = nullptr;
-					//std::wstring -> .clear();
-					//std::ifstream -> .close(); -> .clear();
-
-					auto FileName = Frame->GetInputParams<GetDataParams>()->Filename; //Get the file name
-					string FileName2 = FileName.ToString().c_str(); //convert the filename to a string
-					FileName2.append(".txt"); //append .txt to the end of the filename
-					std::ifstream file(FileName2); //open the file
-					if (!file.is_open()) { //check if the file is open
-						Log::Error("Failed To Open File");
-						file.close(); //close the file
-						file.clear();
-						UE4::FString ReturnError = UE4::FString(TEXT("ERR")); //create a return string
-						//Frame->SetOutput<UE4::FString>("Text", ReturnError); //set the return value
-						UE4::SetVariable<UE4::FString>(obj, "CData", ReturnError);
-						ReturnError = nullptr;
-					}
-					else {
-						Log::Info("Opened File");
-						string content((std::istreambuf_iterator<char>(file)), std::istreambuf_iterator<char>());
-						Log::Print("Read: (" + content + ")");
-						//Log::Print("Lalt 2.8");
-						file.close(); //close the file
-						//Log::Print("Lalt 2.9");
-						//wstring ws(content.begin(), content.end()); //convert the file contents to a wstring
-						//Log::Print("Lalt 2.10");
-						//UE4::FString ret = ws.c_str(); //convert the wstring to a UE4::FString
-						//Log::Print("Lalt 2.11");
-						//Frame->SetOutput<UE4::FString>("Text", ret); //set the return value
-						UE4::SetVariable<UE4::FString>(obj, "CData", UE4::FString(wstring(content.begin(), content.end()).c_str()));
-						//Log::Print("Lalt 2.12");
-						//ret = nullptr;
-						//Log::Print("Lalt 2.13");
-						//ws.clear();
-						//ws = nullptr;
-						//Log::Print("Lalt 2.14");
-						content.clear();
-						//Log::Print("Lalt 2.15");
-						file.clear();
-					}
-					//Log::Print("Lalt 2.16");
-					FileName = nullptr;
-					//Log::Print("Lalt 2.17");
-					FileName2.clear();
-					//Log::Print("Read Done");
+					UE4::SetVariable<UE4::FString>(obj, "CData", UE4::FString(wstring(str.begin(), str.end()).c_str()));
 				}
 
 				for (size_t i = 0; i < Global::GetGlobals()->GetBPFunctionWrappers().size(); i++)
