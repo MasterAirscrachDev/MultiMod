@@ -76,10 +76,9 @@ namespace Hooks
 						//add the ascii value of the character to the string
 						str += static_cast<char>(dataIn[i]);	
 					}
-					std::cout << "data is:'" + str + "'" << std::endl;
+					std::cout << "data is: '" << str << "'" << std::endl;
 					UE4::SetVariable<UE4::FString>(obj, "CData", UE4::FString(wstring(str.begin(), str.end()).c_str()));
 				}
-
 				for (size_t i = 0; i < Global::GetGlobals()->GetBPFunctionWrappers().size(); i++)
 				{
 					if (Frame->Node->GetName() == Global::GetGlobals()->GetBPFunctionWrappers()[i].FunctionName)
