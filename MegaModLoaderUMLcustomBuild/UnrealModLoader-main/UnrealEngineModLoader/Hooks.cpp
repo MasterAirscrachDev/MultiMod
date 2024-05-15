@@ -26,21 +26,6 @@ namespace Hooks
 	{
 		struct PrintStringParams
 		{ UE4::FString Message; };
-
-		struct SaveStringParams {
-			UE4::FString Text;
-			UE4::FString FileName;
-			bool Debug;
-		};
-
-		struct RemoveTextParams
-		{ UE4::FString FileName; };
-
-		struct LoadStringParams
-		{ UE4::FString FileName; };
-
-		struct GetDataParams
-		{ UE4::FString Filename;};
 		
 		struct GetPersistentObject
 		{ UE4::FString ModName; };
@@ -48,10 +33,9 @@ namespace Hooks
 		struct MultiSBCallParams
 		{ UE4::FString Data; };
 		struct IntArrayToStringParams
-		{
-			UE4::TArray<int> Array;
-		};
-		
+		{ UE4::TArray<int> Array; };
+		//char array with abc
+		//char data[] = {'!','\"','#','$','%',' & ','\'','(',')','*','+',',','-','.','/','0','1','2','3','4','5','6','7','8','9',':',';','<','=','>','?','@','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','[','\\',']','^','_','`','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','{','|','}','~',' ' };
 
 		PVOID(*origProcessFunction)(UE4::UObject*, UE4::FFrame*, void* const);
 		PVOID hookProcessFunction(UE4::UObject* obj, UE4::FFrame* Frame, void* const Result)
@@ -71,12 +55,15 @@ namespace Hooks
 				{
 					auto dataIn = Frame->GetInputParams<IntArrayToStringParams>()->Array;
 					std::string str = "";
-					for (int i = 0; i < dataIn.Num(); i++)
+					std:cout << "dataIn size is: '" << dataIn.Num() << "/" << dataIn.Count << "'\n";
+					for (int i = 0; i < dataIn.Count; i++)
 					{
+						std::cout << "data is: '" << dataIn[i] << "'\n";
 						//add the ascii value of the character to the string
-						str += static_cast<char>(dataIn[i]);	
+						//str += data[dataIn[i] - 33];
+						str += static_cast<char>(dataIn[i]);
 					}
-					std::cout << "data is: '" << str << "'" << std::endl;
+					std::cout << "data is: '" << str << "'\n";
 					UE4::SetVariable<UE4::FString>(obj, "CData", UE4::FString(wstring(str.begin(), str.end()).c_str()));
 				}
 				for (size_t i = 0; i < Global::GetGlobals()->GetBPFunctionWrappers().size(); i++)
