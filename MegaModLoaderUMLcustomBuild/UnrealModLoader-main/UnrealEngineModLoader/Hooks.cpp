@@ -30,13 +30,6 @@ namespace Hooks
 		struct GetPersistentObject
 		{ UE4::FString ModName; };
 
-		struct MultiSBCallParams
-		{ UE4::FString Data; };
-		struct IntArrayToStringParams
-		{ UE4::TArray<int> Array; };
-		//char array with abc
-		//char data[] = {'!','\"','#','$','%',' & ','\'','(',')','*','+',',','-','.','/','0','1','2','3','4','5','6','7','8','9',':',';','<','=','>','?','@','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','[','\\',']','^','_','`','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','{','|','}','~',' ' };
-
 		PVOID(*origProcessFunction)(UE4::UObject*, UE4::FFrame*, void* const);
 		PVOID hookProcessFunction(UE4::UObject* obj, UE4::FFrame* Frame, void* const Result)
 		{
@@ -50,21 +43,6 @@ namespace Hooks
 					{
 						Log::Print("%s", msg.ToString().c_str());
 					}
-				}
-				if (Frame->Node->GetName() == "IntArrayToString")
-				{
-					auto dataIn = Frame->GetInputParams<IntArrayToStringParams>()->Array;
-					std::string str = "";
-					std:cout << "dataIn size is: '" << dataIn.Num() << "/" << dataIn.Count << "'\n";
-					for (int i = 0; i < dataIn.Count; i++)
-					{
-						std::cout << "data is: '" << dataIn[i] << "'\n";
-						//add the ascii value of the character to the string
-						//str += data[dataIn[i] - 33];
-						str += static_cast<char>(dataIn[i]);
-					}
-					std::cout << "data is: '" << str << "'\n";
-					UE4::SetVariable<UE4::FString>(obj, "CData", UE4::FString(wstring(str.begin(), str.end()).c_str()));
 				}
 				for (size_t i = 0; i < Global::GetGlobals()->GetBPFunctionWrappers().size(); i++)
 				{
@@ -85,9 +63,6 @@ namespace Hooks
 		PVOID hookInitGameState(void* Ret)
 		{
 			Log::Info("GameStateHook");
-
-			//Testing
-			//curl_global_init(CURL_GLOBAL_ALL);
 			
 			PreBegin_AlreadyLoaded = false;
 			if (GameStateClassInitNotRan)

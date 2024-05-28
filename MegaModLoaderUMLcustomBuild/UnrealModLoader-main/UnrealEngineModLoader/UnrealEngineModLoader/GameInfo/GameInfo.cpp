@@ -68,19 +68,9 @@ void SetupProfile(std::string Path)
 
 	if (std::filesystem::exists(Profile))
 	{
-		std::string filename = "SBMultiModManager.exe";
 		GameProfile::SelectedGameProfile.ProfileName = gamename;
 		Log::Info("Profile Detected: %s", gamename.c_str());
 		std::ifstream file("Profile");
-		if(gamename == "fnaf9-Win64-Shipping"){
-			std::ifstream f(filename.c_str());
-    		if(f.good()){
-				//run SBMultiModManager.exe
-				//system(filename.c_str());
-				std::system("start SBMultiModManager.exe");
-				Log::Info("Security Breach Online");
-			}
-		}
 
 		INI GameInfo(Profile, true);
 		GameInfo.select("GameInfo");
