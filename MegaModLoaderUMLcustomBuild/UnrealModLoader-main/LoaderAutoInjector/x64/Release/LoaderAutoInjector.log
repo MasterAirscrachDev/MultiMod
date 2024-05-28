@@ -1,9 +1,0 @@
-﻿  Assembling xinput1_3\xinput1_3_asm.asm...
-  Loader.cpp
-  xinput1_3.cpp
-     Creating library E:\Downloads\MultiMod\MegaModLoaderUMLcustomBuild\UnrealModLoader-main\UnrealEngineModLoader\x64\Release\xinput1_3.lib and object E:\Downloads\MultiMod\MegaModLoaderUMLcustomBuild\UnrealModLoader-main\UnrealEngineModLoader\x64\Release\xinput1_3.exp
-  Generating code
-  Previous IPDB not found, fall back to full compilation.
-  All 437 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
-  Finished generating code
-  LoaderAutoInjector.vcxproj -> E:\Downloads\MultiMod\MegaModLoaderUMLcustomBuild\UnrealModLoader-main\UnrealEngineModLoader\x64\Release\xinput1_3.dll
